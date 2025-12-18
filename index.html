@@ -49,15 +49,24 @@
         .btn-main { background: white; color: black; border: none; padding: 15px; font-family: 'Orbitron'; font-weight: bold; border-radius: 8px; cursor: pointer; width: 100%; transition: 0.3s; }
         .btn-main:hover { background: var(--main); color: white; box-shadow: 0 0 20px var(--main); }
 
+        /* সার্চ বার স্টাইল */
+        .search-container { max-width: 600px; margin: 20px auto; padding: 0 15px; }
+        #listSearch { 
+            width: 100%; padding: 15px; background: rgba(255,255,255,0.05); 
+            border: 1px solid var(--main); border-radius: 30px; color: white; 
+            font-family: 'Orbitron'; font-size: 12px; text-align: left; padding-left: 25px;
+            box-shadow: 0 0 15px rgba(255, 102, 0, 0.2);
+        }
+        #listSearch:focus { box-shadow: 0 0 25px var(--main); outline: none; }
+
         /* ড্যাশবোর্ড প্যানেল */
         #main-panel { display: none; padding: 40px 15px; text-align: center; }
         .profile-img { width: 120px; height: 120px; border-radius: 50%; border: 3px solid var(--main); box-shadow: 0 0 25px var(--main); margin-bottom: 15px; object-fit: cover; }
         
-        /* লিস্ট স্টাইল */
-        .list-container { max-width: 600px; margin: 30px auto; text-align: left; }
-        .list-title { font-family: 'Orbitron'; color: var(--main); font-size: 14px; margin-bottom: 15px; letter-spacing: 2px; border-left: 4px solid var(--main); padding-left: 10px; }
+        .list-container { max-width: 600px; margin: 10px auto; text-align: left; }
+        .list-title { font-family: 'Orbitron'; color: var(--main); font-size: 14px; margin-bottom: 15px; letter-spacing: 2px; border-left: 4px solid var(--main); padding-left: 10px; margin-top: 30px; }
         
-        .panel-list { list-style: none; padding: 0; margin-bottom: 40px; }
+        .panel-list { list-style: none; padding: 0; margin-bottom: 20px; }
         .panel-item { 
             background: rgba(255,255,255,0.03); margin-bottom: 12px; padding: 18px 25px; 
             border-radius: 12px; border: 1px solid rgba(255,255,255,0.1);
@@ -66,16 +75,13 @@
         }
         .panel-item:hover { background: rgba(255, 102, 0, 0.15); border-color: var(--main); transform: scale(1.02); }
         
-        /* FF Special Glowing Fonts */
         .ff-special { 
             font-weight: 700; letter-spacing: 1.5px; color: #fff;
             text-shadow: 0 0 8px rgba(0, 242, 255, 0.6);
             border-left: 5px solid var(--ff-glow);
             background: linear-gradient(90deg, rgba(0, 242, 255, 0.1), transparent);
         }
-        .ff-special:hover { border-color: #fff; text-shadow: 0 0 15px var(--ff-glow); }
 
-        /* রেসপন্সিভনেস */
         @media (max-width: 768px) { #cursor, #cursor-outline { display: none; } * { cursor: auto !important; } }
     </style>
 </head>
@@ -96,22 +102,30 @@
 
     <div id="main-panel">
         <img src="profile.jpg" class="profile-img" alt="Nazim Profile">
-        <h2 style="font-family: 'Orbitron'; letter-spacing: 3px; margin-bottom: 30px;">NAZIM <span style="color:var(--main)">XLIVE</span></h2>
+        <h2 style="font-family: 'Orbitron'; letter-spacing: 3px; margin-bottom: 20px;">NAZIM <span style="color:var(--main)">XLIVE</span></h2>
         
+        <div class="search-container">
+            <input type="text" id="listSearch" placeholder="SEARCH PANEL OR LINKS..." onkeyup="searchList()">
+        </div>
+
         <div class="list-container">
-            <div class="list-title">FREE FIRE PANEL</div>
-            <div class="panel-list">
-                <a href="FF_PANEL_RED_1.apk" download class="panel-item ff-special"><span>🎯 AUTO HEADSHOT CONFIG</span></a>
-                <a href="#" class="panel-item ff-special"><span>⚡ FREE PANEL V1 (LATEST)</span></a>
-                <a href="#" class="panel-item ff-special"><span>🚀 SENSITIVITY BOOSTER</span></a>
+            <div id="ff-section">
+                <div class="list-title">FREE FIRE PANEL</div>
+                <div class="panel-list">
+                    <a href="FF_PANEL_RED_1.apk" download class="panel-item ff-special searchItem"><span>🎯 AUTO HEADSHOT CONFIG</span></a>
+                    <a href="#" class="panel-item ff-special searchItem"><span>⚡ FREE PANEL V1 (LATEST)</span></a>
+                    <a href="#" class="panel-item ff-special searchItem"><span>🚀 SENSITIVITY BOOSTER</span></a>
+                </div>
             </div>
 
-            <div class="list-title">MY SOCIAL MEDIA LINK</div>
-            <div class="panel-list">
-                <a href="https://www.youtube.com/@XTR_NAZIM" target="_blank" class="panel-item"><span>YOUTUBE CHANNEL</span></a>
-                <a href="https://www.facebook.com/nazimontop" target="_blank" class="panel-item"><span>FACEBOOK PAGE</span></a>
-                <a href="https://wa.me/8801XXXXXXXXX" target="_blank" class="panel-item"><span>WHATSAPP GROUP</span></a>
-                <a href="https://www.tiktok.com/@esports_x_logo" target="_blank" class="panel-item"><span>TIKTOK PROFILE</span></a>
+            <div id="social-section">
+                <div class="list-title">MY SOCIAL MEDIA LINK</div>
+                <div class="panel-list">
+                    <a href="https://www.youtube.com/@XTR_NAZIM" target="_blank" class="panel-item searchItem"><span>YOUTUBE CHANNEL</span></a>
+                    <a href="https://www.facebook.com/nazimontop" target="_blank" class="panel-item searchItem"><span>FACEBOOK PAGE</span></a>
+                    <a href="https://wa.me/8801XXXXXXXXX" target="_blank" class="panel-item searchItem"><span>WHATSAPP GROUP</span></a>
+                    <a href="https://www.tiktok.com/@esports_x_logo" target="_blank" class="panel-item searchItem"><span>TIKTOK PROFILE</span></a>
+                </div>
             </div>
             
             <button class="btn-main" style="background:transparent; color:red; border:1px solid red; margin-top: 20px;" onclick="location.reload()">LOGOUT SYSTEM</button>
@@ -119,7 +133,21 @@
     </div>
 
     <script>
-        // কার্সার ইফেক্ট (পিসির জন্য)
+        // সার্চ ফাংশন
+        function searchList() {
+            let input = document.getElementById('listSearch').value.toLowerCase();
+            let items = document.getElementsByClassName('searchItem');
+            
+            for (let i = 0; i < items.length; i++) {
+                let text = items[i].innerText.toLowerCase();
+                if (text.includes(input)) {
+                    items[i].style.display = "flex";
+                } else {
+                    items[i].style.display = "none";
+                }
+            }
+        }
+
         if (window.innerWidth > 768) {
             const cursor = document.getElementById('cursor');
             const cursorOutline = document.getElementById('cursor-outline');
@@ -129,21 +157,16 @@
             });
         }
 
-        // লগইন লজিক (User: nazim, Pass: nazim)
         function startSystem() {
             const u = document.getElementById('user').value;
             const p = document.getElementById('pass').value;
-            const errorMsg = document.getElementById('error-msg');
-            const lBox = document.getElementById('lBox');
-
             if(u === "nazim" && p === "nazim") {
                 document.getElementById('login-screen').style.display = 'none';
                 document.getElementById('main-panel').style.display = 'block';
-                document.body.style.overflowY = "auto";
             } else {
-                errorMsg.style.display = 'block';
-                lBox.classList.add('error-shake');
-                setTimeout(() => { lBox.classList.remove('error-shake'); }, 400);
+                document.getElementById('error-msg').style.display = 'block';
+                document.getElementById('lBox').classList.add('error-shake');
+                setTimeout(() => { document.getElementById('lBox').classList.remove('error-shake'); }, 400);
             }
         }
     </script>
