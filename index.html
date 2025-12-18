@@ -3,52 +3,49 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NAZIMXLIVE | Pro Gaming Dashboard</title>
+    <title>NAZIMXLIVE | Fixed Dashboard</title>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Poppins:wght@300;600&display=swap" rel="stylesheet">
     <style>
         :root { --main: #ff6600; --bg: #050505; --card: rgba(255, 255, 255, 0.05); }
         * { cursor: none !important; }
-        #cursor { width: 12px; height: 12px; background: var(--main); border-radius: 50%; position: fixed; pointer-events: none; z-index: 9999; box-shadow: 0 0 15px var(--main); }
-        #cursor-outline { width: 30px; height: 30px; border: 2px solid var(--main); border-radius: 50%; position: fixed; pointer-events: none; z-index: 9998; transition: 0.15s ease-out; }
+
+        /* কার্সারকে সবার উপরে রাখার জন্য Z-index বাড়িয়ে দিয়েছি */
+        #cursor { width: 12px; height: 12px; background: var(--main); border-radius: 50%; position: fixed; pointer-events: none; z-index: 100000; box-shadow: 0 0 15px var(--main); }
+        #cursor-outline { width: 30px; height: 30px; border: 2px solid var(--main); border-radius: 50%; position: fixed; pointer-events: none; z-index: 99999; transition: 0.15s ease-out; }
         
         body { background: var(--bg); color: white; font-family: 'Poppins', sans-serif; margin: 0; overflow-x: hidden; }
         .bg-glow { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: radial-gradient(circle at 50% 50%, #ff660011 0%, transparent 70%); z-index: -1; }
 
-        /* লগইন ডিজাইন */
         .login-screen { height: 100vh; display: flex; justify-content: center; align-items: center; }
         .login-card { background: var(--card); backdrop-filter: blur(20px); padding: 40px; border-radius: 30px; border: 1px solid rgba(255, 102, 0, 0.2); width: 320px; text-align: center; }
         input { width: 100%; padding: 12px; margin: 10px 0; background: rgba(0,0,0,0.7); border: 2px solid #222; color: white; border-radius: 10px; outline: none; font-family: 'Orbitron', sans-serif; box-sizing: border-box; }
         .btn { background: linear-gradient(45deg, #ff6600, #ff3300); color: white; border: none; padding: 14px; width: 100%; border-radius: 10px; cursor: pointer; font-weight: bold; font-family: 'Orbitron', sans-serif; transition: 0.4s; }
 
-        /* ড্যাশবোর্ড */
         #dashboard { display: none; padding: 50px 20px; text-align: center; animation: fadeIn 1s; }
         .profile-img { width: 130px; height: 130px; border-radius: 50%; border: 4px solid var(--main); margin-bottom: 15px; box-shadow: 0 0 30px var(--main); object-fit: cover; }
         
-        /* বাটন কালারসমূহ */
         .social-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 15px; max-width: 750px; margin: 30px auto; }
         .social-link { padding: 18px; border-radius: 12px; text-decoration: none; color: white; font-weight: 700; border: 1px solid rgba(255,255,255,0.1); transition: 0.4s; font-family: 'Orbitron', sans-serif; font-size: 11px; background: rgba(255, 255, 255, 0.03); }
 
         .btn-game:hover { background: #6a1b9a; border-color: #9c27b0; box-shadow: 0 0 20px #9c27b0; }
         .btn-yt:hover { background: #ff0000; box-shadow: 0 0 20px #ff0000; }
         .btn-fb:hover { background: #1877f2; box-shadow: 0 0 20px #1877f2; }
+        .btn-tk:hover { background: #000000; border-color: #ff0050; box-shadow: 0 0 20px #ff0050; }
         .btn-wa:hover { background: #25d366; color: black; box-shadow: 0 0 20px #25d366; }
 
-        /* টাইমার পপ-আপ */
+        /* পপ-আপ ডিজাইন */
         #coming-soon { 
             display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; 
-            background: rgba(0,0,0,0.95); z-index: 10000; justify-content: center; align-items: center; 
+            background: rgba(0,0,0,0.95); z-index: 50000; justify-content: center; align-items: center; 
         }
         .cs-content { 
             background: #000; padding: 40px; border-radius: 20px; border: 2px solid var(--main); 
             text-align: center; box-shadow: 0 0 50px var(--main); width: 90%; max-width: 500px;
         }
-        #timer { 
-            display: flex; justify-content: center; gap: 15px; margin-top: 25px; 
-            font-family: 'Orbitron', sans-serif; color: var(--main);
-        }
-        .time-box { background: var(--card); padding: 10px; border-radius: 8px; min-width: 60px; }
-        .time-box span { display: block; font-size: 24px; font-weight: bold; }
-        .time-box label { font-size: 9px; color: #888; text-transform: uppercase; }
+        #timer { display: flex; justify-content: center; gap: 10px; margin-top: 20px; font-family: 'Orbitron', sans-serif; }
+        .time-box { background: rgba(255,255,255,0.05); padding: 10px; border-radius: 8px; min-width: 60px; border: 1px solid rgba(255, 102, 0, 0.3); }
+        .time-box span { display: block; font-size: 22px; color: var(--main); }
+        .time-box label { font-size: 8px; color: #888; }
 
         .video-box { margin-top: 40px; background: var(--card); padding: 15px; border-radius: 20px; width: 100%; max-width: 650px; display: inline-block; border: 1px solid rgba(255,255,255,0.1); }
         iframe { width: 100%; height: 350px; border-radius: 15px; border: 1px solid var(--main); }
@@ -62,14 +59,14 @@
 
     <div id="coming-soon">
         <div class="cs-content">
-            <h1 style="font-family: 'Orbitron'; color: var(--main); margin: 0; letter-spacing: 3px;">ARENA STARTING IN</h1>
+            <h1 style="font-family: 'Orbitron'; color: var(--main); margin: 0; font-size: 24px;">LAUNCHING SOON</h1>
             <div id="timer">
                 <div class="time-box"><span id="days">00</span><label>Days</label></div>
                 <div class="time-box"><span id="hours">00</span><label>Hours</label></div>
                 <div class="time-box"><span id="mins">00</span><label>Mins</label></div>
                 <div class="time-box"><span id="secs">00</span><label>Secs</label></div>
             </div>
-            <button class="btn" style="width: auto; padding: 10px 40px; margin-top: 30px;" onclick="closePopup()">CLOSE</button>
+            <button class="btn" style="width: auto; padding: 10px 40px; margin-top: 30px;" onclick="closePopup()">CLOSE PANEL</button>
         </div>
     </div>
 
@@ -94,7 +91,7 @@
             <a href="https://www.facebook.com/nazimontop" target="_blank" class="social-link btn-fb" onclick="playClick()">FACEBOOK</a>
             <a href="https://www.tiktok.com/@esports_x_logo" target="_blank" class="social-link btn-tk" onclick="playClick()">TIKTOK</a>
             <a href="https://wa.me/8801XXXXXXXXX" target="_blank" class="social-link btn-wa" onclick="playClick()">WHATSAPP</a>
-            <a href="#" class="social-link" style="border-color: var(--main);" onclick="playClick(); alert('Soon!')">PORTFOLIO</a>
+            <a href="#" class="social-link" onclick="playClick(); alert('Soon!')" style="border-color: #444;">PORTFOLIO</a>
         </div>
 
         <div class="video-box">
@@ -114,40 +111,40 @@
 
         function playClick() { const snd = document.getElementById("clickSound"); snd.currentTime = 0; snd.play(); }
 
-        // টাইমার সেটআপ (আজ থেকে ৫ দিন পর)
         const targetDate = new Date();
         targetDate.setDate(targetDate.getDate() + 5);
 
         function updateTimer() {
             const now = new Date().getTime();
             const diff = targetDate - now;
-
             const d = Math.floor(diff / (1000 * 60 * 60 * 24));
             const h = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
             const m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
             const s = Math.floor((diff % (1000 * 60)) / 1000);
-
-            document.getElementById("days").innerHTML = d < 10 ? "0" + d : d;
-            document.getElementById("hours").innerHTML = h < 10 ? "0" + h : h;
-            document.getElementById("mins").innerHTML = m < 10 ? "0" + m : m;
-            document.getElementById("secs").innerHTML = s < 10 ? "0" + s : s;
+            document.getElementById("days").innerHTML = d;
+            document.getElementById("hours").innerHTML = h;
+            document.getElementById("mins").innerHTML = m;
+            document.getElementById("secs").innerHTML = s;
         }
-
         setInterval(updateTimer, 1000);
 
         function openPopup() { document.getElementById("coming-soon").style.display = "flex"; }
-        function closePopup() { document.getElementById("coming-soon").style.display = "none"; }
+        function closePopup() { 
+            playClick();
+            document.getElementById("coming-soon").style.display = "none"; 
+        }
 
         function checkLogin() {
             if (document.getElementById("user").value === "nazim" && document.getElementById("pass").value === "nazim") {
                 document.getElementById("login-page").style.display = "none";
                 document.getElementById("dashboard").style.display = "block";
-            } else { alert("ACCESS DENIED!"); }
+            } else { alert("WRONG PASS!"); }
         }
 
+        // বাটন হোভার হলে কার্সার বড় হবে
         document.querySelectorAll('a, button, input').forEach(el => {
-            el.addEventListener('mouseenter', () => { cursor.style.transform = 'scale(2.5)'; });
-            el.addEventListener('mouseleave', () => { cursor.style.transform = 'scale(1)'; });
+            el.addEventListener('mouseenter', () => { cursor.style.transform = 'scale(2.5)'; cursor.style.background = "white"; });
+            el.addEventListener('mouseleave', () => { cursor.style.transform = 'scale(1)'; cursor.style.background = "var(--main)"; });
         });
     </script>
 </body>
