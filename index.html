@@ -6,7 +6,7 @@
     <title>NAZIMXLIVE | Premium RGB Panel</title>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Poppins:wght@300;600&display=swap" rel="stylesheet">
     <style>
-        :root { --main: #ff6600; --bg: #050505; --error: #ff0000; --ff-glow: #ffcc00; }
+        :root { --main: #ff6600; --bg: #050505; --error: #ff0000; --ff-glow: #00f2ff; }
         
         /* RGB & Animation Effects */
         @keyframes rgbText {
@@ -56,17 +56,26 @@
         
         .panel-list { list-style: none; padding: 0; margin-bottom: 40px; }
         .panel-item { 
-            background: rgba(255,255,255,0.03); margin-bottom: 10px; padding: 15px 20px; 
+            background: rgba(255,255,255,0.03); margin-bottom: 12px; padding: 18px 25px; 
             border-radius: 12px; border: 1px solid rgba(255,255,255,0.1);
             display: flex; justify-content: space-between; align-items: center;
-            transition: 0.3s; text-decoration: none; color: white; font-family: 'Orbitron'; font-size: 12px;
+            transition: 0.4s; text-decoration: none; color: white; font-family: 'Orbitron'; font-size: 13px;
         }
-        .panel-item:hover { background: rgba(255, 102, 0, 0.1); border-color: var(--main); transform: translateX(10px); }
-        .panel-item i { color: var(--main); font-size: 18px; }
+        .panel-item:hover { background: rgba(255, 102, 0, 0.15); border-color: var(--main); transform: scale(1.02); }
         
-        /* FF Special Style */
-        .ff-item { border-left: 5px solid var(--ff-glow); box-shadow: inset 0 0 10px rgba(255,204,0,0.1); }
-        .ff-item:hover { border-color: var(--ff-glow); background: rgba(255,204,0,0.05); }
+        /* --- বিশেষ সুন্দর ফন্ট স্টাইল (FF PANEL) --- */
+        .ff-special { 
+            font-weight: 700; 
+            letter-spacing: 1.5px;
+            color: #fff;
+            text-shadow: 0 0 8px rgba(0, 242, 255, 0.6);
+            border-left: 5px solid var(--ff-glow);
+            background: linear-gradient(90deg, rgba(0, 242, 255, 0.1), transparent);
+        }
+        .ff-special:hover {
+            border-color: #fff;
+            text-shadow: 0 0 15px var(--ff-glow);
+        }
 
         @media (max-width: 768px) { #cursor, #cursor-outline { display: none; } * { cursor: auto !important; } }
     </style>
@@ -93,9 +102,9 @@
         <div class="list-container">
             <div class="list-title">FREE FIRE PANEL</div>
             <div class="panel-list">
-                <a href="#" class="panel-item ff-item"><span>FREE PANEL V1 (LATEST)</span> ⚡</a>
-                <a href="#" class="panel-item ff-item"><span>AUTO HEADSHOT CONFIG</span> 🎯</a>
-                <a href="#" class="panel-item ff-item"><span>SENSITIVITY BOOSTER</span> 🚀</a>
+                <a href="#" class="panel-item ff-special"><span>⚡ FREE PANEL V1 (LATEST)</span></a>
+                <a href="#" class="panel-item ff-special"><span>🎯 AUTO HEADSHOT CONFIG</span></a>
+                <a href="#" class="panel-item ff-special"><span>🚀 SENSITIVITY BOOSTER</span></a>
             </div>
 
             <div class="list-title">MY SOCIAL MEDIA LINK</div>
@@ -106,12 +115,11 @@
                 <a href="https://www.tiktok.com/@esports_x_logo" target="_blank" class="panel-item"><span>TIKTOK PROFILE</span></a>
             </div>
             
-            <button class="btn-main" style="background:transparent; color:red; border:1px solid red;" onclick="location.reload()">LOGOUT SYSTEM</button>
+            <button class="btn-main" style="background:transparent; color:red; border:1px solid red; margin-top: 20px;" onclick="location.reload()">LOGOUT SYSTEM</button>
         </div>
     </div>
 
     <script>
-        // Cursor
         if (window.innerWidth > 768) {
             const cursor = document.getElementById('cursor');
             const cursorOutline = document.getElementById('cursor-outline');
@@ -121,7 +129,6 @@
             });
         }
 
-        // Login Logic
         function startSystem() {
             const u = document.getElementById('user').value;
             const p = document.getElementById('pass').value;
