@@ -3,101 +3,101 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NAZIMXLIVE | A-Z Premium RGB Panel</title>
+    <title>NAZIMXLIVE | Clean A-Z Panel</title>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Poppins:wght@300;600&display=swap" rel="stylesheet">
     <style>
         :root { 
             --main: #ff6600; 
             --bg: #050505; 
+            --error: #ff0000;
             --neon-blue: #00f2ff;
             --neon-green: #39ff14;
             --neon-pink: #ff00ff;
             --neon-yellow: #fefe33;
         }
 
-        /* RGB Light Animation for Sponsor & Titles */
-        @keyframes rgbGlow {
-            0% { color: #ff0000; text-shadow: 0 0 10px #ff0000, 0 0 20px #ff0000; }
-            20% { color: #ff00ff; text-shadow: 0 0 10px #ff00ff, 0 0 20px #ff00ff; }
-            40% { color: #0000ff; text-shadow: 0 0 10px #0000ff, 0 0 20px #0000ff; }
-            60% { color: #00ffff; text-shadow: 0 0 10px #00ffff, 0 0 20px #00ffff; }
-            80% { color: #00ff00; text-shadow: 0 0 10px #00ff00, 0 0 20px #00ff00; }
-            100% { color: #ffff00; text-shadow: 0 0 10px #ffff00, 0 0 20px #ffff00; }
+        /* শুধু স্পন্সরের জন্য আরজিবি লাইট */
+        @keyframes rgbSponsor {
+            0% { color: #ff0000; text-shadow: 0 0 10px #ff0000; }
+            25% { color: #00ff00; text-shadow: 0 0 10px #00ff00; }
+            50% { color: #0000ff; text-shadow: 0 0 10px #0000ff; }
+            75% { color: #ffff00; text-shadow: 0 0 10px #ffff00; }
+            100% { color: #ff0000; text-shadow: 0 0 10px #ff0000; }
+        }
+
+        /* ভুল পাসওয়ার্ড দিলে কাঁপানোর এনিমেশন */
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            20%, 60% { transform: translateX(-10px); }
+            40%, 80% { transform: translateX(10px); }
+        }
+
+        .shake-error {
+            animation: shake 0.4s ease-in-out;
+            border-color: var(--error) !important;
+            box-shadow: 0 0 20px var(--error) !important;
         }
 
         * { cursor: none !important; }
-        #cursor { width: 10px; height: 10px; background: white; border-radius: 50%; position: fixed; pointer-events: none; z-index: 100000; box-shadow: 0 0 10px #fff; }
+        #cursor { width: 10px; height: 10px; background: white; border-radius: 50%; position: fixed; pointer-events: none; z-index: 100000; }
         #cursor-outline { width: 40px; height: 40px; border: 2px solid var(--main); border-radius: 50%; position: fixed; pointer-events: none; z-index: 99999; transition: 0.15s ease-out; }
 
         body { background: var(--bg); color: white; font-family: 'Poppins', sans-serif; margin: 0; overflow-x: hidden; }
 
-        /* Sponsored By Nazmul Style */
-        .sponsor-text {
+        /* স্পন্সর বাই নাজমূল - ক্লিকেবল ও আরজিবি */
+        .sponsor-tag {
             position: fixed;
             bottom: 20px;
             left: 20px;
+            z-index: 9999;
+            text-decoration: none;
+            background: rgba(0,0,0,0.8);
+            padding: 10px 18px;
+            border-radius: 10px;
+            border: 1px solid rgba(255,255,255,0.1);
+            backdrop-filter: blur(5px);
+        }
+        .sponsor-text {
             font-family: 'Orbitron';
-            font-size: 14px;
+            font-size: 13px;
             font-weight: 900;
             letter-spacing: 2px;
-            z-index: 999;
-            animation: rgbGlow 3s linear infinite;
-            background: rgba(0,0,0,0.5);
-            padding: 5px 10px;
-            border-radius: 5px;
+            animation: rgbSponsor 3s linear infinite;
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
 
-        /* Login */
+        /* লগইন বক্স */
         #login-screen { height: 100vh; display: flex; justify-content: center; align-items: center; background: #000; }
         .login-box { 
             background: rgba(15, 15, 15, 0.95); padding: 40px; border-radius: 30px; 
-            border: 2px solid var(--main); text-align: center; width: 100%; max-width: 380px;
-            box-shadow: 0 0 25px var(--main);
+            border: 2px solid #222; text-align: center; width: 100%; max-width: 380px;
+            transition: 0.3s;
         }
-        .rgb-title { font-family: 'Orbitron'; font-size: 26px; font-weight: 900; animation: rgbGlow 3s linear infinite; letter-spacing: 5px; margin-bottom: 30px; }
-        input { width: 100%; padding: 15px; margin-bottom: 20px; background: #111; border: 1px solid #333; color: #fff; border-radius: 12px; font-family: 'Orbitron'; outline: none; text-align: center; }
-        .btn-main { background: linear-gradient(45deg, var(--main), #ffcc00); color: #000; border: none; padding: 15px; font-family: 'Orbitron'; font-weight: 900; border-radius: 12px; cursor: pointer; width: 100%; text-transform: uppercase; }
+        .login-title { font-family: 'Orbitron'; font-size: 24px; font-weight: 900; color: #fff; letter-spacing: 4px; margin-bottom: 30px; }
+        input { width: 100%; padding: 15px; margin-bottom: 20px; background: #111; border: 1px solid #333; color: #fff; border-radius: 12px; font-family: 'Orbitron'; outline: none; text-align: center; transition: 0.3s; }
+        .btn-main { background: var(--main); color: #fff; border: none; padding: 15px; font-family: 'Orbitron'; font-weight: 900; border-radius: 12px; cursor: pointer; width: 100%; text-transform: uppercase; }
 
-        /* Dashboard */
+        /* ড্যাশবোর্ড */
         #main-panel { display: none; padding: 40px 15px; }
         .search-wrapper { position: sticky; top: 15px; z-index: 1000; max-width: 600px; margin: 0 auto 40px; }
         #listSearch { 
             width: 100%; padding: 18px 30px; background: rgba(20,20,20,0.9); border: 2px solid var(--main); 
-            border-radius: 50px; color: #fff; font-family: 'Orbitron'; font-size: 14px;
-            box-shadow: 0 0 25px rgba(255,102,0,0.3); backdrop-filter: blur(10px); outline: none; box-sizing: border-box;
-        }
-
-        /* A-Z Labels */
-        .alpha-label { 
-            font-family: 'Orbitron'; font-size: 45px; font-weight: 900; 
-            color: transparent; -webkit-text-stroke: 1px var(--neon-blue);
-            margin: 30px 0 10px; display: block; text-shadow: 0 0 15px var(--neon-blue);
+            border-radius: 50px; color: #fff; font-family: 'Orbitron'; font-size: 14px; outline: none; box-sizing: border-box;
         }
 
         .list-container { max-width: 600px; margin: 0 auto; padding-bottom: 100px; }
-        .game-group { margin-bottom: 25px; background: rgba(255,255,255,0.03); padding: 20px; border-radius: 20px; border: 1px solid #222; }
-        
-        .group-header { 
-            font-family: 'Orbitron'; font-size: 18px; font-weight: 900; 
-            margin-bottom: 15px; color: var(--neon-yellow); 
-            text-shadow: 0 0 10px rgba(254, 254, 51, 0.5);
-            border-left: 4px solid var(--neon-yellow); padding-left: 10px;
-        }
+        .game-group { margin-bottom: 25px; background: #111; padding: 20px; border-radius: 20px; border: 1px solid #222; }
+        .group-header { font-family: 'Orbitron'; font-size: 18px; font-weight: 900; margin-bottom: 15px; color: var(--neon-yellow); border-left: 4px solid var(--neon-yellow); padding-left: 10px; }
 
         .panel-item { 
-            background: #111; margin-bottom: 10px; padding: 14px 20px; 
-            border-radius: 12px; border: 1px solid #333;
-            display: flex; justify-content: space-between; align-items: center;
-            text-decoration: none; font-family: 'Orbitron'; font-size: 12px;
-            color: var(--neon-green); text-shadow: 0 0 5px var(--neon-green);
-            transition: 0.3s;
+            background: #000; margin-bottom: 10px; padding: 14px 20px; border-radius: 12px; border: 1px solid #333;
+            display: flex; justify-content: space-between; align-items: center; text-decoration: none; 
+            font-family: 'Orbitron'; font-size: 12px; color: #888; transition: 0.3s;
         }
-        .panel-item:hover { background: var(--neon-green); color: #000; box-shadow: 0 0 20px var(--neon-green); transform: scale(1.02); }
-
-        .active-ff-card { border: 2px solid var(--neon-pink) !important; color: var(--neon-pink) !important; text-shadow: 0 0 10px var(--neon-pink); }
-
-        #coming-soon { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); z-index: 1000000; justify-content: center; align-items: center; }
-        .cs-box { background: #000; border: 3px solid var(--neon-pink); padding: 50px; border-radius: 30px; text-align: center; }
+        .panel-item:hover { background: #1a1a1a; color: var(--neon-green); border-color: var(--neon-green); }
+        .active-ff-card { border: 1px solid var(--neon-pink) !important; color: var(--neon-pink) !important; }
 
         @media (max-width: 768px) { #cursor, #cursor-outline { display: none; } * { cursor: auto !important; } }
     </style>
@@ -107,11 +107,16 @@
     <div id="cursor"></div>
     <div id="cursor-outline"></div>
 
-    <div class="sponsor-text">SPONSORED BY NAZMUL</div>
+    <a href="https://www.tiktok.com/@.md.nazmul.hassan08?is_from_webapp=1&sender_device=pc" target="_blank" class="sponsor-tag">
+        <div class="sponsor-text">
+            <span style="font-size: 10px; color: #fff;">SPONSORED BY</span>
+            <span>NAZMUL</span>
+        </div>
+    </a>
 
     <div id="login-screen">
-        <div class="login-box">
-            <div class="rgb-title">NAZIM PANEL</div>
+        <div class="login-box" id="loginBox">
+            <div class="login-title">NAZIM PANEL</div>
             <input type="text" id="user" placeholder="USERNAME">
             <input type="password" id="pass" placeholder="PASSWORD">
             <button class="btn-main" onclick="startSystem()">ACCESS SYSTEM</button>
@@ -119,57 +124,45 @@
     </div>
 
     <div id="main-panel">
-        <center><h2 style="font-family: 'Orbitron'; letter-spacing: 5px; font-weight: 900; animation: rgbGlow 5s infinite;">NAZIM <span style="color:var(--main)">XLIVE</span></h2></center>
-        
-        <div class="search-wrapper">
-            <input type="text" id="listSearch" placeholder="SEARCH GAME NAME (A-Z)..." onkeyup="filterList()">
-        </div>
-
-        <div class="list-container">
-            <div class="game-group" style="border-color: var(--neon-pink);">
+        <center><h2 style="font-family: 'Orbitron'; letter-spacing: 5px; font-weight: 900; color: #fff;">NAZIM <span style="color:var(--main)">XLIVE</span></h2></center>
+        <div class="search-wrapper"><input type="text" id="listSearch" placeholder="SEARCH FOR GAME..." onkeyup="filterList()"></div>
+        <div class="list-container" id="alphabetical-list">
+             <div class="game-group" style="border-color: var(--neon-pink);">
                 <div class="group-header" style="color: var(--neon-pink); border-color: var(--neon-pink);">⭐ ACTIVE DOWNLOAD</div>
                 <a href="FF_PANEL_RED_1.apk" download class="panel-item active-ff-card"><span>🎯 AUTO HEADSHOT CONFIG</span> <span>[APK]</span></a>
             </div>
-
-            <div id="alphabetical-list"></div>
-        </div>
-    </div>
-
-    <div id="coming-soon" onclick="this.style.display='none'">
-        <div class="cs-box">
-            <h2 style="font-family: 'Orbitron'; color: var(--neon-pink); animation: rgbGlow 2s infinite;">COMING SOON...</h2>
-            <p style="color: #fff; font-family: 'Orbitron';">UNDER MAINTENANCE</p>
-        </div>
+            </div>
     </div>
 
     <script>
+        // লগইন লজিক উইথ শেক এনিমেশন
+        function startSystem() {
+            const loginBox = document.getElementById('loginBox');
+            const user = document.getElementById('user').value;
+            const pass = document.getElementById('pass').value;
+
+            if(user === "nazim" && pass === "nazim") {
+                document.getElementById('login-screen').style.display = 'none';
+                document.getElementById('main-panel').style.display = 'block';
+            } else {
+                // পাসওয়ার্ড ভুল হলে লাল হয়ে কাঁপবে
+                loginBox.classList.add('shake-error');
+                
+                // ০.৪ সেকেন্ড পর এনিমেশন রিমুভ করবে যাতে আবার ট্রাই করা যায়
+                setTimeout(() => {
+                    loginBox.classList.remove('shake-error');
+                }, 400);
+            }
+        }
+
+        // গেম লিস্ট ডেটা (আগের মতোই)
         const allGames = [
-            { name: "AMONG US PANEL", items: ["Imposter Hack", "All Skins"] },
-            { name: "APEX LEGENDS PANEL", items: ["Apex Aimbot", "Glow ESP"] },
-            { name: "ASPHALT 9 PANEL", items: ["Unlimited Nitro", "Speed Mod"] },
-            { name: "BATTLEFIELD V PANEL", items: ["Radar Hack", "No Recoil"] },
-            { name: "CALL OF DUTY PANEL", items: ["COD Aimbot", "Wallhack"] },
-            { name: "CLASH OF CLANS PANEL", items: ["Unlimited Gems", "Max Town Hall"] },
-            { name: "CYBERPUNK 2077 PANEL", items: ["Unlimited Money", "God Mode"] },
-            { name: "DEAD TARGET PANEL", items: ["Unlimited Gold", "One Shot"] },
-            { name: "FORTNITE PANEL", items: ["ESP Box", "Aim Assist"] },
-            { name: "FIFA 24 PANEL", items: ["Unlimited Coins", "Skill Mod"] },
-            { name: "GTA V PANEL", items: ["Money Hack", "God Mode", "Car Mod"] },
-            { name: "GTA SAN ANDREAS PANEL", items: ["Cheat Menu", "All Cities"] },
-            { name: "GENSHIN IMPACT PANEL", items: ["Damage Mod", "Fast Travel"] },
-            { name: "HILL CLIMB PANEL", items: ["Unlimited Fuel", "All Cars"] },
-            { name: "LUDO KING PANEL", items: ["Six Controller", "Win Predictor"] },
-            { name: "MINECRAFT PANEL", items: ["X-Ray", "God Mode", "Fly Mod"] },
-            { name: "MOBILE LEGENDS PANEL", items: ["Map Hack", "Skin Unlocker"] },
-            { name: "NEED FOR SPEED PANEL", items: ["Nitro Hack", "Cash Mod"] },
-            { name: "PUBG MOBILE PANEL", items: ["Aim Assist", "No Recoil", "Less Shake"] },
-            { name: "ROBLOX PANEL", items: ["Fly Mod", "Wallhack", "Jump Mod"] },
-            { name: "STUMBLE GUYS PANEL", items: ["Skin Unlock", "Speed Hack", "Gems Mod"] },
-            { name: "SUBWAY SURFERS PANEL", items: ["Unlimited Keys", "High Jump"] },
-            { name: "TEKKEN 7 PANEL", items: ["All Characters", "Damage Mod"] },
-            { name: "VALORANT PANEL", items: ["Skin Mod", "ESP Wall"] },
-            { name: "WATCH DOGS PANEL", items: ["Battery Mod", "Fast Hack"] },
-            { name: "ZOMBIE CATCHERS PANEL", items: ["Plutonium Mod", "Max Gear"] }
+            { name: "AMONG US PANEL", items: ["Imposter Hack"] },
+            { name: "APEX LEGENDS PANEL", items: ["Glow ESP"] },
+            { name: "GTA V PANEL", items: ["Money Hack", "God Mode"] },
+            { name: "PUBG MOBILE PANEL", items: ["No Recoil"] },
+            { name: "ROBLOX PANEL", items: ["Fly Mod"] },
+            { name: "STUMBLE GUYS PANEL", items: ["Skin Unlock"] }
         ];
 
         const listDiv = document.getElementById('alphabetical-list');
@@ -184,42 +177,26 @@
         Object.keys(sortedAlpha).forEach(letter => {
             const section = document.createElement('div');
             section.className = "alpha-section";
-            let html = `<div class="alpha-label">${letter}</div>`;
+            section.innerHTML = `<div style="font-family:'Orbitron'; font-size:30px; color:#222; margin:20px 0;">${letter}</div>`;
             
             sortedAlpha[letter].forEach(game => {
-                html += `<div class="game-group">
+                let html = `<div class="game-group">
                             <div class="group-header">${game.name}</div>`;
                 game.items.forEach(item => {
-                    html += `<a href="#" class="panel-item" onclick="showCS()"><span>${item}</span> <span>LOCKED</span></a>`;
+                    html += `<a href="#" class="panel-item"><span>${item}</span> <span>LOCKED</span></a>`;
                 });
                 html += `</div>`;
+                section.innerHTML += html;
             });
-            section.innerHTML = html;
             listDiv.appendChild(section);
         });
-
-        function showCS() { document.getElementById('coming-soon').style.display='flex'; }
 
         function filterList() {
             let input = document.getElementById('listSearch').value.toLowerCase();
             let groups = document.getElementsByClassName('game-group');
-            let sections = document.getElementsByClassName('alpha-section');
-
             for (let i = 0; i < groups.length; i++) {
                 let headerText = groups[i].querySelector('.group-header').innerText.toLowerCase();
                 groups[i].style.display = headerText.includes(input) ? "block" : "none";
-            }
-
-            for (let s = 0; s < sections.length; s++) {
-                let visibleGroups = sections[s].querySelectorAll('.game-group[style="display: block;"]');
-                sections[s].style.display = visibleGroups.length > 0 ? "block" : "none";
-            }
-        }
-
-        function startSystem() {
-            if(document.getElementById('user').value === "nazim" && document.getElementById('pass').value === "nazim") {
-                document.getElementById('login-screen').style.display = 'none';
-                document.getElementById('main-panel').style.display = 'block';
             }
         }
 
