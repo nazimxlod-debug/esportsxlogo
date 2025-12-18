@@ -3,47 +3,130 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>eSports X Official | Login</title>
+    <title>eSports X | VIP Gallery</title>
     <style>
-        body { background-color: #0b0e11; color: #ff6600; text-align: center; padding-top: 100px; font-family: 'Segoe UI', sans-serif; }
-        .container { border: 4px solid #ff6600; display: inline-block; padding: 40px; border-radius: 20px; box-shadow: 0 0 30px #ff6600; background: #161b22; min-width: 300px; }
-        h1 { font-size: 50px; text-transform: uppercase; margin-bottom: 20px; letter-spacing: 5px; }
-        input { width: 90%; padding: 12px; margin: 10px 0; border-radius: 5px; border: 1px solid #ff6600; background: #0b0e11; color: white; outline: none; }
-        button { background: #ff6600; color: white; border: none; padding: 12px 30px; border-radius: 5px; cursor: pointer; font-weight: bold; font-size: 16px; margin-top: 10px; }
-        button:hover { background: #e65c00; }
-        #main-content { display: none; } /* শুরুতে মূল ইন্টারফেসটি লুকিয়ে রাখা হয়েছে */
+        /* পুরো ওয়েবসাইটের ডিজাইন */
+        body { 
+            background-color: #0b0e11; 
+            color: #ff6600; 
+            text-align: center; 
+            font-family: 'Segoe UI', sans-serif; 
+            margin: 0; 
+            padding-bottom: 50px; 
+        }
+
+        /* লগইন বক্স স্টাইল */
+        .login-box { 
+            margin-top: 100px; 
+            display: inline-block; 
+            background: #161b22; 
+            padding: 40px; 
+            border-radius: 20px; 
+            border: 3px solid #ff6600; 
+            box-shadow: 0 0 30px rgba(255, 102, 0, 0.4); 
+        }
+
+        input { 
+            width: 90%; padding: 12px; margin: 10px 0; 
+            background: #0b0e11; border: 1px solid #ff6600; 
+            color: white; border-radius: 8px; outline: none; 
+        }
+
+        button { 
+            background: #ff6600; color: white; border: none; 
+            padding: 12px 30px; border-radius: 8px; 
+            cursor: pointer; font-weight: bold; width: 100%; 
+            transition: 0.3s; 
+        }
+
+        button:hover { 
+            background: #ff8533; box-shadow: 0 0 15px #ff6600; 
+        }
+
+        /* লোগো গ্যালারি ডিজাইন */
+        #gallery-page { display: none; padding: 20px; }
+        
+        .logo-grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
+            gap: 25px; padding: 40px; max-width: 1200px; margin: 0 auto; 
+        }
+
+        .logo-card { 
+            background: #161b22; 
+            border: 2px solid #333; 
+            border-radius: 15px; 
+            padding: 15px; 
+            transition: 0.4s; 
+        }
+
+        .logo-card:hover { 
+            border-color: #ff6600; 
+            transform: translateY(-10px); 
+            box-shadow: 0 10px 30px rgba(255, 102, 0, 0.5); 
+        }
+
+        .logo-card img { 
+            width: 100%; 
+            border-radius: 10px; 
+        }
+
+        .logo-title { 
+            margin-top: 15px; 
+            color: #fff; 
+            font-size: 18px; 
+            font-weight: bold; 
+        }
     </style>
 </head>
 <body>
 
-    <div id="login-box" class="container">
-        <h1>LOGIN</h1>
-        <input type="text" id="username" placeholder="Username">
-        <input type="password" id="password" placeholder="Password">
-        <br>
-        <button onclick="checkLogin()">ENTER SITE</button>
-        <p id="error" style="color: red; display: none; margin-top: 10px;">ভুল ইউজারনেম বা পাসওয়ার্ড!</p>
+    <div id="login-section">
+        <div class="login-box">
+            <h1 style="letter-spacing: 5px; margin: 0;">ESPORTS X</h1>
+            <p style="color: #888;">Username & Password: esportsx</p>
+            <input type="text" id="user" placeholder="Username">
+            <input type="password" id="pass" placeholder="Password">
+            <button onclick="checkAccess()">UNLOCK GALLERY</button>
+            <p id="err" style="color: #ff4444; display: none; margin-top: 10px;">ভুল পাসওয়ার্ড!</p>
+        </div>
     </div>
 
-    <div id="main-content" class="container">
-        <h1>ESPORTS X</h1>
-        <p>THE FUTURE OF GAMING</p>
-        <hr style="border: 1px solid #ff6600; margin: 20px 0;">
-        <p style="color: white;">Welcome back, Leader!</p>
-        <p>Site is Live and Hosted on GitHub</p>
+    <div id="gallery-page">
+        <h1 style="font-size: 40px; text-shadow: 0 0 15px #ff6600;">MY PREMIUM LOGOS</h1>
+        <p style="color: #ccc;">Welcome, Nazim! Explore your collection below:</p>
+        
+        <div class="logo-grid">
+            <div class="logo-card">
+                <img src="https://r.jina.ai/i/0532657e256b46188e99994c657a7000" alt="Logo 1">
+                <div class="logo-title">EAGLE EDITION</div>
+            </div>
+
+            <div class="logo-card">
+                <img src="https://r.jina.ai/i/f8be9f9602df4553b65551806305a000" alt="Logo 2">
+                <div class="logo-title">GAMING INTERFACE</div>
+            </div>
+
+            <div class="logo-card">
+                <img src="https://r.jina.ai/i/0532657e256b46188e99994c657a7000" style="filter: hue-rotate(180deg);" alt="Logo 3">
+                <div class="logo-title">CYBERPUNK EDITION</div>
+            </div>
+        </div>
+
+        <button onclick="location.reload()" style="width: auto; padding: 12px 50px;">LOGOUT</button>
     </div>
 
     <script>
-        function checkLogin() {
-            var user = document.getElementById("username").value;
-            var pass = document.getElementById("password").value;
+        function checkAccess() {
+            var u = document.getElementById("user").value;
+            var p = document.getElementById("pass").value;
             
-            // আপনি যেমন চেয়েছেন: ইউজারনেম ও পাসওয়ার্ড esportsx
-            if (user === "esportsx" && pass === "esportsx") {
-                document.getElementById("login-box").style.display = "none";
-                document.getElementById("main-content").style.display = "block";
+            // লগইন কন্ডিশন
+            if (u === "esportsx" && p === "esportsx") {
+                document.getElementById("login-section").style.display = "none";
+                document.getElementById("gallery-page").style.display = "block";
             } else {
-                document.getElementById("error").style.display = "block";
+                document.getElementById("err").style.display = "block";
             }
         }
     </script>
