@@ -3,10 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NAZIM 69x | Official</title>
+    <title>NAZIM 69x | Official Portfolio</title>
     
     <link rel="icon" type="image/png" href="profile.jpg">
-    
+    <link rel="apple-touch-icon" href="profile.jpg">
+    <meta property="og:image" content="profile.jpg">
+    <meta property="og:image:type" content="image/jpeg">
+    <meta property="og:image:width" content="300">
+    <meta property="og:image:height" content="300">
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Hind+Siliguri:wght@400;700&display=swap" rel="stylesheet">
     
@@ -15,33 +20,35 @@
         * { box-sizing: border-box; }
         body { margin: 0; background: var(--bg); color: white; font-family: 'Hind Siliguri', sans-serif; overflow-x: hidden; }
 
-        /* হেডার ও কন্টাক্ট বাটন */
+        /* হেডার ও বাটনসমূহ */
         header { 
             padding: 15px 5%; display: flex; justify-content: space-between; align-items: center; 
             background: rgba(0,0,0,0.9); position: sticky; top: 0; z-index: 1000; border-bottom: 1px solid #333; 
         }
-        .contact-btn {
-            background: var(--neon); color: black; padding: 8px 18px; border-radius: 5px; 
-            cursor: pointer; font-weight: bold; border: none; font-family: 'Orbitron'; transition: 0.3s;
+        .nav-buttons { display: flex; gap: 10px; }
+        .btn {
+            background: var(--neon); color: black; padding: 8px 12px; border-radius: 5px; 
+            cursor: pointer; font-weight: bold; border: none; font-family: 'Orbitron'; font-size: 12px; transition: 0.3s;
         }
-        .contact-btn:hover { box-shadow: 0 0 15px var(--neon); transform: scale(1.05); }
+        .btn-update { background: #333; color: var(--neon); border: 1px solid var(--neon); }
+        .btn:hover { box-shadow: 0 0 15px var(--neon); transform: scale(1.05); }
 
-        /* পপ-আপ কন্টাক্ট বক্স */
-        #contactModal {
+        /* পপ-আপ কন্টাক্ট ও আপডেট বক্স */
+        .modal {
             display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%);
             background: #111; padding: 30px; border-radius: 15px; border: 2px solid var(--neon);
             z-index: 2000; text-align: center; box-shadow: 0 0 50px rgba(0, 210, 255, 0.5); width: 90%; max-width: 400px;
         }
         .close-btn { background: red; color: white; border: none; padding: 5px 15px; border-radius: 5px; cursor: pointer; margin-top: 15px; }
 
-        /* বাম পাশের পরিচিতি সেকশন */
+        /* পরিচিতি সেকশন */
         .intro-left {
             text-align: left; padding: 25px; border-left: 5px solid var(--neon); 
             margin: 30px 5%; background: #0e0e0e; border-radius: 0 10px 10px 0;
         }
         .intro-left h3 { margin: 0; color: var(--neon); font-family: 'Orbitron'; font-size: 24px; }
 
-        /* প্রোফাইল ইমেজ ও হিরো */
+        /* প্রোফাইল ইমেজ */
         .hero { padding: 50px 5%; display: flex; flex-direction: column; align-items: center; text-align: center; }
         .profile-img { 
             width: clamp(160px, 40vw, 220px); height: clamp(160px, 40vw, 220px); 
@@ -49,12 +56,11 @@
             margin-bottom: 25px; object-fit: cover; 
         }
         
-        /* সোশ্যাল বাটন ও গ্রিড */
         .socials { display: flex; gap: 25px; margin-top: 20px; }
         .socials a { font-size: 35px; color: white; transition: 0.4s; }
         .socials a:hover { color: var(--neon); transform: translateY(-8px); }
 
-        /* ভিডিও সেকশন ও "Coming Soon" */
+        /* ভিডিও সেকশন ও এনিমেশন */
         .section { padding: 40px 5%; text-align: center; }
         .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px; margin-top: 30px; }
         .video-box { background: #111; border-radius: 15px; border: 1px solid #222; overflow: hidden; }
@@ -68,25 +74,33 @@
         }
         @keyframes glow { 0% { background-position: 0%; } 100% { background-position: 200%; } }
 
-        /* রেসপনসিভ সেটিংস */
-        @media (max-width: 768px) {
-            .intro-left { margin: 20px 3%; padding: 15px; }
-            .hero h1 { font-size: 35px; }
+        @media (max-width: 600px) {
+            header { flex-direction: column; gap: 10px; }
+            .intro-left { margin: 20px 3%; }
         }
     </style>
 </head>
 <body>
 
     <header>
-        <button class="contact-btn" onclick="openModal()"><i class="fas fa-paper-plane"></i> Contact</button>
-        <div style="font-family:'Orbitron'; color:var(--neon); font-size: 22px;">NAZIM 69x</div>
+        <div class="nav-buttons">
+            <button class="btn" onclick="openModal('contactModal')"><i class="fas fa-paper-plane"></i> Contact</button>
+            <button class="btn btn-update" onclick="openModal('updateModal')"><i class="fas fa-history"></i> Updated Details</button>
+        </div>
+        <div style="font-family:'Orbitron'; color:var(--neon); font-size: 20px;">NAZIM 69x</div>
     </header>
 
-    <div id="contactModal">
+    <div id="contactModal" class="modal">
         <h2>Contact Me</h2>
-        <p style="font-size: 18px; color: white;">Email: <b>ffnazim560@gmail.com</b></p>
-        <p style="color: #aaa;">যেকোনো প্রয়োজনে ইমেইল করুন।</p>
-        <button class="close-btn" onclick="closeModal()">Close</button>
+        <p style="font-size: 18px;">Email: <b>ffnazim560@gmail.com</b></p>
+        <button class="close-btn" onclick="closeModal('contactModal')">Close</button>
+    </div>
+
+    <div id="updateModal" class="modal">
+        <h2>Update Info</h2>
+        <p style="font-size: 18px; color: var(--neon);">লাস্ট আপডেট: 1/1/2026</p>
+        <p>নতুন সোশ্যাল লিঙ্ক এবং ভিডিও গ্রিড যোগ করা হয়েছে।</p>
+        <button class="close-btn" onclick="closeModal('updateModal')">Close</button>
     </div>
 
     <div class="intro-left">
@@ -122,8 +136,8 @@
     </footer>
 
     <script>
-        function openModal() { document.getElementById("contactModal").style.display = "block"; }
-        function closeModal() { document.getElementById("contactModal").style.display = "none"; }
+        function openModal(id) { document.getElementById(id).style.display = "block"; }
+        function closeModal(id) { document.getElementById(id).style.display = "none"; }
     </script>
 
 </body>
