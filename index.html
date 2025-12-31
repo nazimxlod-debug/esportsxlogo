@@ -42,6 +42,11 @@
         }
         .close-btn { background: red; color: white; border: none; padding: 5px 15px; border-radius: 5px; cursor: pointer; margin-top: 15px; display: block; width: fit-content; margin-left: auto; }
 
+        /* লেয়ার স্টাইল */
+        .layer { border-bottom: 1px solid #333; padding: 10px 0; }
+        .layer:last-child { border-bottom: none; }
+        .date { color: var(--neon); font-size: 12px; font-weight: bold; }
+
         .intro-left {
             text-align: left; padding: 25px; border-left: 5px solid var(--neon); 
             margin: 30px 5%; background: #0e0e0e; border-radius: 0 10px 10px 0;
@@ -83,9 +88,22 @@
     </div>
 
     <div id="updateModal" class="modal">
-        <h2 style="color:#00ff00">Update Info</h2>
-        <p><b>লাস্ট আপডেট: 1/1/2026</b></p>
-        <p>আপনাদের জন্য আমাদের ওয়েবসাইট আরো আপডেট করা হচ্ছে। সিস্টেম পারফরম্যান্স উন্নত করা হয়েছে।</p>
+        <h2 style="color:#00ff00; font-family:'Orbitron'">Updated Details</h2>
+        
+        <div class="layer">
+            <span class="date">1/1/2026</span>
+            <p style="margin: 5px 0;">ওয়েবসাইট আপডেট: নতুন ইউজার ইন্টারফেস এবং স্পিড অপ্টিমাইজেশন করা হয়েছে।</p>
+        </div>
+        
+        <div class="layer">
+            <span class="date">2/1/2026</span>
+            <p style="margin: 5px 0;">প্রাইভেসি আপডেট: আপনাদের সুরক্ষার জন্য প্রাইভেসী সিস্টেম আরও শক্তিশালী করা হয়েছে।</p>
+        </div>
+        
+        <div class="layer" style="text-align: center; padding-top: 20px;">
+            <p style="color: #ff0000; font-weight: bold; font-family: 'Orbitron'; animation: glow 1.5s infinite alternate;">NEXT UPDATE COMING SOON</p>
+        </div>
+
         <button class="close-btn" onclick="closeModal('updateModal')">Close</button>
     </div>
 
@@ -93,12 +111,10 @@
         <h2 style="color:#ff00ff; font-family:'Orbitron'">Security & Privacy</h2>
         <p style="color: #00ff00; font-weight: bold;">Security Version: 1.1</p>
         <p style="font-size: 14px; line-height: 1.6; color: #eee;">
-            আপনাদের সুরক্ষার জন্য আমাদের সংস্থা <b>NAZIM 69x Security</b> সবসময় সতর্ক। আমাদের সিকিউরিটি সিস্টেম প্রতিদিন আপডেট করা হচ্ছে যাতে আপনাদের ডাটা এবং ব্রাউজিং অভিজ্ঞতা ১০০% নিরাপদ থাকে। <br><br>
-            <b>কেন আমাদের বিশ্বাস করবেন?</b><br>
-            • <b>এনক্রিপশন:</b> আপনার প্রতিটি ভিজিট আমাদের উন্নত সিকিউরিটি লেয়ার দ্বারা সুরক্ষিত। <br>
-            • <b>নো ডাটা ট্র্যাকিং:</b> আমরা আপনার কোনো ব্যক্তিগত তথ্য বা ব্রাউজিং ইতিহাস ট্র্যাক করি না। <br>
+            আপনাদের সুরক্ষার জন্য আমাদের সংস্থা <b>NAZIM 69x Security</b> সবসময় সতর্ক। আমাদের সিকিউরিটি সিস্টেম প্রতিদিন আপডেট হচ্ছে যাতে আপনাদের ডাটা এবং ব্রাউজিং অভিজ্ঞতা ১০০% নিরাপদ থাকে। <br><br>
+            • <b>এনক্রিপশন:</b> প্রতিটি ভিজিট আমাদের উন্নত সিকিউরিটি লেয়ার দ্বারা সুরক্ষিত। <br>
             • <b>রিয়েল-টাইম মনিটরিং:</b> আমাদের বিশেষ টিম সার্বক্ষণিক সাইটের নিরাপত্তা নিশ্চিত করে। <br><br>
-            আপনাদের বিশ্বাস আমাদের শক্তি। <b>NAZIM 69x Security</b> টিমের ওপর আস্থা রাখুন, আমরা আপনাদের ডিজিটাল সুরক্ষায় কোনো আপস করি না।
+            আপনাদের ডিজিটাল সুরক্ষায় আমরা কোনো আপস করি না। <b>NAZIM 69x Security</b> টিমের ওপর আস্থা রাখুন।
         </p>
         <button class="close-btn" onclick="closeModal('privacyModal')">Close</button>
     </div>
