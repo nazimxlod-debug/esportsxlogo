@@ -3,315 +3,243 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>XTR NAZIM | Infinite Billion Content System</title>
-    <link rel="icon" type="image/png" href="https://cdn-icons-png.flaticon.com/512/1384/1384060.png">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Hind+Siliguri:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <title>NAZIM 69x | Official Portfolio</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Hind+Siliguri:wght@400;700&display=swap" rel="stylesheet">
     
     <style>
-        /* CSS সেকশন আমরা অনেক বড় এবং ডিটেইলড করেছি */
         :root {
-            --yt-main: #0f0f0f;
-            --yt-sidebar: #0f0f0f;
-            --yt-red: #ff0000;
-            --yt-white: #f1f1f1;
-            --yt-gray: #aaaaaa;
-            --yt-hover: #272727;
-            --yt-border: #333333;
-            --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            --brand-color: #00d2ff; /* সিয়ান ব্লু থিম */
+            --bg-dark: #050505;
+            --card-dark: #121212;
+            --text-white: #ffffff;
         }
 
         body {
-            background-color: var(--yt-main);
-            color: var(--yt-white);
-            font-family: 'Roboto', 'Hind Siliguri', sans-serif;
             margin: 0;
-            overflow: hidden;
-            display: flex;
-            flex-direction: column;
-            height: 100vh;
+            background-color: var(--bg-dark);
+            color: var(--text-white);
+            font-family: 'Hind Siliguri', sans-serif;
+            scroll-behavior: smooth;
         }
 
-        /* প্রিমিয়াম নেভিগেশন */
-        .top-nav {
+        /* --- হেডার ও ব্র্যান্ডিং --- */
+        header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 0 20px;
-            height: 60px;
-            background: var(--yt-main);
+            padding: 15px 5%;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(10px);
             position: sticky;
             top: 0;
-            z-index: 2000;
+            z-index: 1000;
+            border-bottom: 1px solid #333;
         }
 
-        .nav-left { display: flex; align-items: center; gap: 20px; }
-        .menu-icon { font-size: 20px; cursor: pointer; padding: 10px; border-radius: 50%; }
-        .menu-icon:hover { background: var(--yt-hover); }
-        .logo-box { display: flex; align-items: center; gap: 4px; text-decoration: none; color: white; }
-        .logo-box i { color: var(--yt-red); font-size: 30px; }
-        .logo-box h1 { font-size: 20px; letter-spacing: -1.2px; font-weight: 700; margin: 0; }
-
-        /* বিশাল সার্চ ইঞ্জিন ডিজাইন */
-        .nav-center { flex: 0 1 720px; display: flex; align-items: center; }
-        .search-group {
-            display: flex;
-            width: 100%;
-            background: #121212;
-            border: 1px solid var(--yt-border);
-            border-radius: 40px 0 0 40px;
-            padding-left: 15px;
-            margin-left: 40px;
-        }
-        .search-group input {
-            background: transparent;
-            border: none;
-            color: white;
-            padding: 10px;
-            width: 100%;
-            outline: none;
-            font-size: 16px;
-        }
-        .search-btn {
-            background: #222;
-            border: 1px solid var(--yt-border);
-            border-left: none;
-            color: white;
-            padding: 0 20px;
-            border-radius: 0 40px 40px 0;
-            cursor: pointer;
-            font-size: 18px;
-        }
-        .mic-icon {
-            background: #181818;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-left: 10px;
-            cursor: pointer;
+        .brand-name {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 26px;
+            font-weight: bold;
+            color: var(--brand-color);
+            text-decoration: none;
+            letter-spacing: 2px;
         }
 
-        /* লেআউট কন্ট্রোল */
-        .master-container { display: flex; flex: 1; overflow: hidden; }
-
-        /* মেগা সাইডবার */
-        .mega-sidebar {
-            width: 240px;
-            background: var(--yt-sidebar);
-            overflow-y: auto;
-            padding: 10px;
-            transition: var(--transition);
-        }
-        .s-item {
-            display: flex;
-            align-items: center;
-            gap: 24px;
-            padding: 10px 12px;
-            border-radius: 10px;
-            cursor: pointer;
+        nav a {
             color: white;
             text-decoration: none;
-            font-size: 14px;
-            margin-bottom: 2px;
+            margin-left: 25px;
+            font-size: 16px;
+            transition: 0.3s;
         }
-        .s-item:hover { background: var(--yt-hover); }
-        .s-item.active { background: var(--yt-hover); font-weight: 700; }
-        .s-item i { font-size: 20px; width: 24px; text-align: center; }
-        .s-sep { border: none; border-top: 1px solid var(--yt-border); margin: 12px 0; }
-        .s-title { padding: 10px 12px; font-size: 16px; font-weight: 700; color: #f1f1f1; }
+        nav a:hover { color: var(--brand-color); }
 
-        /* কোটি কোটি কন্টেন্ট ফিড */
-        .content-feed {
-            flex: 1;
-            background: #0f0f0f;
-            overflow-y: auto;
-            padding: 24px;
+        /* --- প্রোফাইল ও পরিচিতি (Hero Section) --- */
+        .hero {
+            height: 90vh;
             display: flex;
-            flex-direction: column;
-        }
-        .video-wall {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(310px, 1fr));
-            gap: 16px;
-            row-gap: 40px;
-        }
-
-        /* প্রিমিয়াম ভিডিও কার্ড */
-        .video-box { cursor: pointer; transition: transform 0.2s; }
-        .video-box:hover { transform: scale(1.02); }
-        .v-thumb-wrap {
-            position: relative;
-            width: 100%;
-            aspect-ratio: 16/9;
-            border-radius: 12px;
-            overflow: hidden;
-            background: #222;
-        }
-        .v-thumb-wrap img { width: 100%; height: 100%; object-fit: cover; }
-        .v-time {
-            position: absolute;
-            bottom: 8px;
-            right: 8px;
-            background: rgba(0,0,0,0.8);
-            color: white;
-            padding: 3px 6px;
-            border-radius: 4px;
-            font-size: 12px;
-            font-weight: 500;
-        }
-        .v-data { display: flex; gap: 12px; margin-top: 12px; }
-        .v-chan-icon { width: 36px; height: 36px; border-radius: 50%; background: linear-gradient(45deg, #ff0000, #550000); flex-shrink: 0; }
-        .v-info h3 { margin: 0; font-size: 16px; line-height: 1.4; font-weight: 600; color: white; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
-        .v-info p { margin: 4px 0 0; color: var(--yt-gray); font-size: 14px; }
-
-        /* ইনজেকশন লোডার */
-        #mass-loader { text-align: center; padding: 50px; color: var(--yt-red); font-size: 20px; font-weight: bold; }
-
-        /* প্লেয়ার মোড */
-        #player-modal {
-            display: none;
-            position: fixed;
-            inset: 0;
-            background: rgba(0,0,0,0.95);
-            z-index: 9999;
             flex-direction: column;
             justify-content: center;
             align-items: center;
+            text-align: center;
+            background: radial-gradient(circleAt Center, #1a1a1a 0%, #050505 100%);
         }
-        .close-player { position: absolute; top: 20px; right: 30px; font-size: 40px; cursor: pointer; color: white; }
+
+        .profile-img {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            border: 4px solid var(--brand-color);
+            box-shadow: 0 0 20px var(--brand-color);
+            margin-bottom: 20px;
+            object-fit: cover;
+        }
+
+        .hero h1 {
+            font-size: 50px;
+            margin: 0;
+            font-family: 'Orbitron', sans-serif;
+        }
+
+        .hero p {
+            font-size: 20px;
+            color: #aaa;
+            max-width: 700px;
+            margin-top: 15px;
+        }
+
+        /* --- সোশ্যাল মিডিয়া লিঙ্কস --- */
+        .social-bar {
+            display: flex;
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .social-icon {
+            width: 50px;
+            height: 50px;
+            background: #222;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            font-size: 22px;
+            color: white;
+            text-decoration: none;
+            transition: 0.4s;
+            border: 1px solid #333;
+        }
+
+        .social-icon:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px var(--brand-color);
+            border-color: var(--brand-color);
+            color: var(--brand-color);
+        }
+
+        /* --- ভিডিও লিস্ট সেকশনস --- */
+        .content-section { padding: 80px 5%; }
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 40px;
+            border-bottom: 2px solid #222;
+            padding-bottom: 10px;
+        }
+        .section-header i { font-size: 30px; color: var(--brand-color); }
+        .section-header h2 { font-size: 28px; margin: 0; }
+
+        .video-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 25px;
+        }
+
+        .v-card {
+            background: var(--card-dark);
+            border-radius: 15px;
+            overflow: hidden;
+            border: 1px solid #222;
+            transition: 0.3s;
+        }
+        .v-card:hover { border-color: var(--brand-color); transform: scale(1.02); }
+
+        .v-card iframe, .v-card img {
+            width: 100%;
+            aspect-ratio: 16/9;
+            border: none;
+        }
+
+        .v-info { padding: 15px; }
+        .v-info h4 { margin: 0; font-size: 16px; color: #eee; }
+
+        footer {
+            text-align: center;
+            padding: 40px;
+            background: #000;
+            border-top: 1px solid #222;
+            color: #666;
+            font-family: 'Orbitron', sans-serif;
+        }
     </style>
 </head>
 <body>
 
-    <header class="top-nav">
-        <div class="nav-left">
-            <i class="fas fa-bars menu-icon"></i>
-            <a href="#" class="logo-box">
-                <i class="fab fa-youtube"></i>
-                <h1>YouTube <span>Nazim</span></h1>
-            </a>
-        </div>
-        <div class="nav-center">
-            <div class="search-group">
-                <input type="text" id="megaSearch" placeholder="কোটি কোটি ভিডিওর মাঝে খুঁজুন...">
-            </div>
-            <button class="search-btn" onclick="executeMegaSearch()"><i class="fas fa-search"></i></button>
-            <div class="mic-icon"><i class="fas fa-microphone"></i></div>
-        </div>
-        <div class="nav-right" style="display: flex; gap: 20px; font-size: 20px; align-items: center;">
-            <i class="fas fa-video"></i><i class="fas fa-th"></i><i class="fas fa-bell"></i>
-            <div style="width: 32px; height: 32px; background: orange; border-radius: 50%;"></div>
-        </div>
+    <header>
+        <a href="#" class="brand-name">NAZIM 69x</a>
+        <nav>
+            <a href="#about">পরিচিতি</a>
+            <a href="#tiktok">TikTok</a>
+            <a href="#youtube">YouTube</a>
+            <a href="#facebook">Facebook</a>
+        </nav>
     </header>
 
-    <div class="master-container">
-        <aside class="mega-sidebar">
-            <a href="#" class="s-item active"><i class="fas fa-home"></i> Home</a>
-            <a href="#" class="s-item"><i class="fas fa-bolt"></i> Shorts</a>
-            <a href="#" class="s-item"><i class="fas fa-layer-group"></i> Subscriptions</a>
-            <hr class="s-sep">
-            <a href="#" class="s-item"><i class="fas fa-play-circle"></i> You</a>
-            <a href="#" class="s-item"><i class="fas fa-history"></i> History</a>
-            <hr class="s-sep">
-            <div class="s-title">Explore</div>
-            <a href="#" class="s-item"><i class="fas fa-fire"></i> Trending</a>
-            <a href="#" class="s-item"><i class="fas fa-shopping-bag"></i> Shopping</a>
-            <a href="#" class="s-item"><i class="fas fa-music"></i> Music</a>
-            <a href="#" class="s-item"><i class="fas fa-gamepad"></i> Gaming</a>
-            <a href="#" class="s-item"><i class="fas fa-newspaper"></i> News</a>
-            <a href="#" class="s-item"><i class="fas fa-trophy"></i> Sports</a>
-            <hr class="s-sep">
-            <div class="s-title">Subscriptions</div>
-            <a href="#" class="s-item"><div class="v-chan-icon" style="width:24px; height:24px;"></div> XTR NAZIM</a>
-        </aside>
+    <section class="hero" id="about">
+        <img src="https://via.placeholder.com/200" alt="NAZIM 69x" class="profile-img">
+        <h1>NAZIM 69x</h1>
+        <p>নতুন প্রজন্মের কন্টেন্ট ক্রিয়েটর। আমি টেকনোলজি, গেমিং এবং সোশ্যাল মিডিয়া ট্রেন্ড নিয়ে কাজ করতে ভালোবাসি।</p>
+        
+        <div class="social-bar">
+            <a href="https://facebook.com/your_id" class="social-icon" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://tiktok.com/@your_id" class="social-icon" title="TikTok"><i class="fab fa-tiktok"></i></a>
+            <a href="https://instagram.com/your_id" class="social-icon" title="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="https://youtube.com/@XTR_NAZIM" class="social-icon" title="YouTube"><i class="fab fa-youtube"></i></a>
+        </div>
+    </section>
 
-        <main class="content-feed" id="scrollContainer">
-            <div class="video-wall" id="videoWall">
-                </div>
-            <div id="mass-loader"><i class="fas fa-circle-notch fa-spin"></i> Loading Billion Content Engine...</div>
-        </main>
-    </div>
+    <section class="content-section" id="tiktok">
+        <div class="section-header">
+            <i class="fab fa-tiktok"></i>
+            <h2>TikTok ভিডিও লিস্ট</h2>
+        </div>
+        <div class="video-grid">
+            <div class="v-card">
+                <img src="https://img.youtube.com/vi/yPYZpwSpKAg/maxresdefault.jpg">
+                <div class="v-info"><h4>Viral TikTok Trick #1</h4></div>
+            </div>
+            <div class="v-card">
+                <img src="https://img.youtube.com/vi/3JZ_D3ELwOQ/maxresdefault.jpg">
+                <div class="v-info"><h4>Trendings with NAZIM 69x</h4></div>
+            </div>
+        </div>
+    </section>
 
-    <div id="player-modal">
-        <span class="close-player" onclick="exitPlayer()">&times;</span>
-        <div id="playerFrame" style="width: 85%; aspect-ratio: 16/9; background: #000; border-radius: 20px; overflow: hidden;"></div>
-    </div>
+    <section class="content-section" id="youtube" style="background: #080808;">
+        <div class="section-header">
+            <i class="fab fa-youtube"></i>
+            <h2>YouTube ভিডিও লিস্ট</h2>
+        </div>
+        <div class="video-grid">
+            <div class="v-card">
+                <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ"></iframe>
+                <div class="v-info"><h4>How to Build a Brand - NAZIM 69x</h4></div>
+            </div>
+            <div class="v-card">
+                <iframe src="https://www.youtube.com/embed/yPYZpwSpKAg"></iframe>
+                <div class="v-info"><h4>Zefoy Update Full Tutorial</h4></div>
+            </div>
+        </div>
+    </section>
 
-    <script>
-        // কোটি কোটি ডাটার জন্য ডাইনামিক লাইব্রেরি
-        const videoDB = [
-            {id: "yPYZpwSpKAg", title: "XTR Nazim Special: Zefoy 2.0 Full Tutorial"},
-            {id: "3JZ_D3ELwOQ", title: "How to Hack Design Limits - Premium Tips"},
-            {id: "dQw4w9WgXcQ", title: "Millionaire Coding Secrets 2025"},
-            {id: "V-_O7nl0Ii0", title: "The Future of Web Development with Nazim"},
-            {id: "ScMzIvxBSi4", title: "Building a YouTube Clone in 10 Minutes"},
-            {id: "tgbNymZ7vqY", title: "Unlimited Content Strategy for YouTubers"}
-        ];
+    <section class="content-section" id="facebook">
+        <div class="section-header">
+            <i class="fab fa-facebook"></i>
+            <h2>Facebook ভিডিও লিস্ট</h2>
+        </div>
+        <div class="video-grid">
+            <div class="v-card">
+                <img src="https://img.youtube.com/vi/V-_O7nl0Ii0/maxresdefault.jpg">
+                <div class="v-info"><h4>Exclusive Facebook Live Stream</h4></div>
+            </div>
+        </div>
+    </section>
 
-        // কোটি কোটি কন্টেন্ট জেনারেট করার ইঞ্জিন
-        function generateBillionContent(amount = 24, query = "Recommended") {
-            const wall = document.getElementById('videoWall');
-            
-            for (let i = 0; i < amount; i++) {
-                const data = videoDB[Math.floor(Math.random() * videoDB.length)];
-                const views = (Math.random() * 999).toFixed(1) + "M";
-                const timeAgo = Math.floor(Math.random() * 23) + 1 + " hours ago";
-                
-                const card = document.createElement('div');
-                card.className = 'video-box';
-                card.onclick = () => launchPlayer(data.id);
-                
-                card.innerHTML = `
-                    <div class="v-thumb-wrap">
-                        <img src="https://img.youtube.com/vi/${data.id}/maxresdefault.jpg" loading="lazy">
-                        <div class="v-time">${Math.floor(Math.random()*15)+2}:${Math.floor(Math.random()*50)+10}</div>
-                    </div>
-                    <div class="v-data">
-                        <div class="v-chan-icon"></div>
-                        <div class="v-info">
-                            <h3>${query}: ${data.title} #${Math.floor(Math.random()*900000)}</h3>
-                            <p>XTR NAZIM • ${views} views • ${timeAgo}</p>
-                        </div>
-                    </div>
-                `;
-                wall.appendChild(card);
-            }
-        }
+    <footer>
+        <p>&copy; 2026 NAZIM 69x | Powered by Nazim's Creative Studio</p>
+    </footer>
 
-        // সার্চ ফাংশন
-        function executeMegaSearch() {
-            const val = document.getElementById('megaSearch').value;
-            if(val) {
-                document.getElementById('videoWall').innerHTML = "";
-                generateBillionContent(30, val);
-            }
-        }
-
-        // ভিডিও প্লেয়ার কন্ট্রোল
-        function launchPlayer(id) {
-            const modal = document.getElementById('player-modal');
-            const frame = document.getElementById('playerFrame');
-            frame.innerHTML = `<iframe width="100%" height="100%" src="https://www.youtube.com/embed/${id}?autoplay=1" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>`;
-            modal.style.display = 'flex';
-        }
-
-        function exitPlayer() {
-            document.getElementById('player-modal').style.display = 'none';
-            document.getElementById('playerFrame').innerHTML = "";
-        }
-
-        // আনলিমিটেড কন্টেন্ট স্ক্রল (Infinite Content Loop)
-        document.getElementById('scrollContainer').addEventListener('scroll', function() {
-            if (this.scrollTop + this.clientHeight >= this.scrollHeight - 20) {
-                generateBillionContent(12, "Unlimited Feed");
-            }
-        });
-
-        // ইনিশিয়াল লোড (প্রথমেই ৬০টি কন্টেন্ট)
-        generateBillionContent(60, "Trending");
-    </script>
 </body>
 </html>
