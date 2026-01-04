@@ -1,210 +1,123 @@
 <!DOCTYPE html>
 <html lang="bn">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NAZIM 69x | Official</title>
-    
-    <link rel="icon" type="image/png" href="profile.jpg">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Noto+Sans+Bengali:wght@400;700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-    
-    <script type="module">
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-app.js";
-        import { getDatabase, ref, push, onValue } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-database.js";
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NAZIM 69x | Official</title>
 
-        const firebaseConfig = {
-            apiKey: "AIzaSyDp23COK80-myTOd9s-w2HGl3nnC0jf2cY",
-            authDomain: "nazim69x-92451.firebaseapp.com",
-            databaseURL: "https://nazim69x-92451-default-rtdb.firebaseio.com/",
-            projectId: "nazim69x-92451",
-            storageBucket: "nazim69x-92451.firebasestorage.app",
-            messagingSenderId: "292325931340",
-            appId: "1:292325931340:web:9196720165eb06cce077e9",
-            measurementId: "G-JBZN5L8YX2"
-        };
+<link rel="icon" type="image/png" href="profile.jpg">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Noto+Sans+Bengali:wght@400;700&display=swap" rel="stylesheet">
 
-        const app = initializeApp(firebaseConfig);
-        const db = getDatabase(app);
-        const ratingRef = ref(db, "ratings");
+<style>
+:root { --neon:#00d2ff; --bg:#050505; }
+*{box-sizing:border-box;}
+body{
+    margin:0;
+    background:var(--bg);
+    color:#fff;
+    font-family:'Noto Sans Bengali',sans-serif;
+}
 
-        window.submitRating = function() {
-            const stars = window.selectedStars;
-            const msg = document.getElementById('feedback').value;
-            if(stars === 0) { alert("অনুগ্রহ করে একটি স্টার সিলেক্ট করুন!"); return; }
+header{
+    padding:15px 5%;
+    background:#000;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    border-bottom:1px solid #333;
+}
 
-            push(ratingRef, {
-                star: stars,
-                message: msg,
-                admin_reply: "",
-                time: new Date().toLocaleString()
-            }).then(() => {
-                alert("ধন্যবাদ! আপনার রেটিং এবং মেসেজটি সফলভাবে রেকর্ড করা হয়েছে।");
-                closeModal('ratingModal');
-                document.getElementById('feedback').value = "";
-                setStar(0);
-            });
-        };
+.logo{
+    font-family:'Orbitron';
+    font-size:20px;
+    color:var(--neon);
+}
 
-        const displayList = document.getElementById('rating-display-list');
-        onValue(ratingRef, (snapshot) => {
-            displayList.innerHTML = "";
-            if (!snapshot.exists()) {
-                displayList.innerHTML = "<p>এখনো কোনো রেটিং নেই।</p>";
-                return;
-            }
-            snapshot.forEach((child) => {
-                const data = child.val();
-                const item = document.createElement('div');
-                item.className = "rating-item";
-                item.innerHTML = `
-                    <div style="border-bottom: 1px solid #333; margin-bottom: 8px; padding-bottom: 5px;">
-                        <span style="color:#ffcc00;">${"⭐".repeat(data.star)}</span>
-                        <span style="font-size:10px; color:#666; float:right;">${data.time}</span>
-                    </div>
-                    <p style="font-size:14px; color:#eee;">"${data.message}"</p>
-                    ${data.admin_reply ? `<div class="admin-reply"><b>Nazim:</b> ${data.admin_reply}</div>` : ""}
-                `;
-                displayList.prepend(item);
-            });
-        });
-    </script>
+.social-links{
+    display:flex;
+    gap:14px;
+}
 
-    <style>
-        :root { --neon: #00d2ff; --bg: #050505; }
-        * { box-sizing: border-box; }
-        body { margin: 0; background: var(--bg); color: white; font-family: 'Noto Sans Bengali', sans-serif; overflow-x: hidden; }
+.social-links a{
+    color:var(--neon);
+    font-size:18px;
+    transition:.3s;
+}
 
-        header { padding: 15px 5%; display: flex; justify-content: space-between; align-items: center; background: rgba(0,0,0,0.9); position: sticky; top: 0; z-index: 1000; border-bottom: 1px solid #333; }
-        .nav-buttons { display: flex; gap: 8px; flex-wrap: wrap; }
-        .btn { background: var(--neon); color: black; padding: 6px 12px; border-radius: 5px; cursor: pointer; font-weight: bold; border: none; font-family: 'Orbitron'; font-size: 11px; transition: 0.3s; }
-        .btn-update { background: #222; color: #00ff00; border: 1px solid #00ff00; }
-        .btn-privacy { background: #222; color: #ff00ff; border: 1px solid #ff00ff; }
+.social-links a:hover{
+    color:#ffcc00;
+    transform:scale(1.2);
+}
 
-        .modal { display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background: #111; padding: 25px; border-radius: 15px; border: 2px solid var(--neon); z-index: 2000; width: 92%; max-width: 500px; max-height: 85vh; overflow-y: auto; box-shadow: 0 0 50px rgba(0, 210, 255, 0.4); }
-        .close-btn { background: red; color: white; border: none; padding: 8px 20px; border-radius: 5px; cursor: pointer; margin-top: 15px; display: block; width: fit-content; margin-left: auto; font-weight: bold; }
+.hero{
+    text-align:center;
+    padding:40px 5%;
+}
 
-        .update-box { background: #1a1a1a; padding: 18px; border-radius: 12px; margin-bottom: 20px; border: 1px solid #333; }
-        .title-text { font-family: 'Roboto', sans-serif; font-weight: 700; font-size: 15px; color: var(--neon); }
-        .date-text { font-size: 12px; color: #aaa; background: #222; padding: 2px 8px; border-radius: 4px; }
-        .next-update { color: #ff4444; font-size: 13px; font-weight: bold; margin-top: 10px; }
-        .next-update::before { content: '●'; animation: blink 1s infinite; margin-right: 5px; }
-        @keyframes blink { 0% { opacity: 1; } 50% { opacity: 0; } 100% { opacity: 1; } }
+.profile-img{
+    width:180px;
+    height:180px;
+    border-radius:50%;
+    border:4px solid var(--neon);
+    box-shadow:0 0 25px var(--neon);
+    object-fit:cover;
+}
 
-        .stars { margin: 15px 0; display: flex; gap: 10px; justify-content: center; }
-        .stars i { font-size: 25px; color: #444; cursor: pointer; }
-        .stars i.active { color: #ffcc00; text-shadow: 0 0 10px #ffcc00; }
-        
-        .rating-item { background: #1a1a1a; padding: 15px; border-radius: 10px; margin-bottom: 15px; border-left: 4px solid var(--neon); }
-        .admin-reply { background: rgba(0, 210, 255, 0.1); padding: 10px; border-radius: 5px; margin-top: 10px; font-size: 13px; color: var(--neon); border-left: 2px solid var(--neon); }
+.hero h1{
+    font-family:'Orbitron';
+    margin:15px 0 10px;
+}
 
-        .intro-left { text-align: left; padding: 25px; border-left: 5px solid var(--neon); margin: 30px 5%; background: #0e0e0e; border-radius: 0 10px 10px 0; }
-        .hero { padding: 40px 5%; display: flex; flex-direction: column; align-items: center; text-align: center; }
-        .profile-img { width: 180px; height: 180px; border-radius: 50%; border: 4px solid var(--neon); box-shadow: 0 0 25px var(--neon); margin-bottom: 20px; object-fit: cover; }
-        .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px; padding: 20px 5%; }
-        iframe { width: 100%; aspect-ratio: 9/16; border-radius: 15px; border: none; }
-        
-        @media (max-width: 600px) { header { flex-direction: column; gap: 10px; } }
-    </style>
+.grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fill,minmax(280px,1fr));
+    gap:20px;
+    padding:20px 5%;
+}
+
+iframe{
+    width:100%;
+    aspect-ratio:9/16;
+    border-radius:15px;
+    border:none;
+}
+</style>
 </head>
+
 <body>
 
-    <header>
-        <div class="nav-buttons">
-            <button class="btn" style="background:#ffcc00;" onclick="openModal('ratingModal')"><i class="fas fa-star"></i> Rate</button>
-            <button class="btn" onclick="openModal('listModal')"><i class="fas fa-comments"></i> Ratings</button>
-            <button class="btn btn-update" onclick="openModal('updateModal')"><i class="fas fa-history"></i> Updates</button>
-            <button class="btn btn-privacy" onclick="openModal('privacyModal')"><i class="fas fa-shield-alt"></i> Privacy</button>
-        </div>
-        <div style="font-family:'Orbitron'; color:var(--neon); font-size: 18px;">NAZIM 69x</div>
-    </header>
+<header>
+    <div class="logo">NAZIM 69x</div>
 
-    <div id="ratingModal" class="modal">
-        <h2 style="color:#ffcc00; font-family:'Orbitron';">User Rating</h2>
-        <div class="stars">
-            <i class="fas fa-star" onclick="setStar(1)"></i>
-            <i class="fas fa-star" onclick="setStar(2)"></i>
-            <i class="fas fa-star" onclick="setStar(3)"></i>
-            <i class="fas fa-star" onclick="setStar(4)"></i>
-            <i class="fas fa-star" onclick="setStar(5)"></i>
-        </div>
-        <textarea id="feedback" style="width:100%; background:#222; color:white; border:1px solid #444; padding:10px; border-radius:5px;" placeholder="মতামত বা সমস্যা লিখুন..." rows="4"></textarea>
-        <button class="btn" style="width:100%; margin-top:10px;" onclick="submitRating()">Submit Message</button>
-        <button class="close-btn" onclick="closeModal('ratingModal')">Close</button>
+    <!-- SOCIAL ICONS -->
+    <div class="social-links">
+        <a href="https://facebook.com/YOUR_FB_ID" target="_blank"><i class="fab fa-facebook-f"></i></a>
+        <a href="https://www.tiktok.com/@YOUR_TIKTOK_ID" target="_blank"><i class="fab fa-tiktok"></i></a>
+        <a href="https://youtube.com/@YOUR_YT_ID" target="_blank"><i class="fab fa-youtube"></i></a>
+        <a href="https://instagram.com/YOUR_INSTA_ID" target="_blank"><i class="fab fa-instagram"></i></a>
+        <a href="https://discord.gg/YOUR_SERVER" target="_blank"><i class="fab fa-discord"></i></a>
     </div>
+</header>
 
-    <div id="listModal" class="modal">
-        <h2 style="color:var(--neon); font-family:'Orbitron';">Feedbacks</h2>
-        <div id="rating-display-list"></div>
-        <button class="close-btn" onclick="closeModal('listModal')">Close</button>
+<section class="hero">
+    <img src="profile.jpg" class="profile-img" alt="Nazim">
+    <h1>NAZIM 69x</h1>
+
+    <!-- SOCIAL ICONS BELOW PROFILE -->
+    <div class="social-links" style="justify-content:center;margin-top:10px;">
+        <a href="https://facebook.com/YOUR_FB_ID" target="_blank"><i class="fab fa-facebook-f"></i></a>
+        <a href="https://www.tiktok.com/@YOUR_TIKTOK_ID" target="_blank"><i class="fab fa-tiktok"></i></a>
+        <a href="https://youtube.com/@YOUR_YT_ID" target="_blank"><i class="fab fa-youtube"></i></a>
+        <a href="https://instagram.com/YOUR_INSTA_ID" target="_blank"><i class="fab fa-instagram"></i></a>
+        <a href="https://discord.gg/YOUR_SERVER" target="_blank"><i class="fab fa-discord"></i></a>
     </div>
+</section>
 
-    <div id="updateModal" class="modal">
-        <h2 style="color:#00ff00; font-family:'Orbitron'; border-bottom: 2px solid #333; padding-bottom: 10px;">UPDATE DETAILS</h2>
-        <div class="update-box">
-            <div style="display:flex; justify-content:space-between;">
-                <span class="title-text">Website update</span>
-                <span class="date-text">01/01/2026</span>
-            </div>
-            <p style="font-size:15px; margin:10px 0;">নতুন ইউজার ইন্টারফেস এবং স্পিড অপ্টিমাইজেশন করা হয়েছে।</p>
-            <div class="next-update">Next update coming soon.</div>
-        </div>
-        <button class="close-btn" onclick="closeModal('updateModal')">Close</button>
-    </div> 
+<div class="grid">
+    <iframe src="https://www.tiktok.com/embed/7589163619233926420"></iframe>
+    <iframe src="https://www.tiktok.com/embed/7583955549369421077"></iframe>
+</div>
 
-    <div id="listModal" class="modal">
-        <h2 style="color:var(--neon); font-family:'Orbitron';">Feedbacks</h2>
-        <div id="rating-display-list"></div>
-        <button class="close-btn" onclick="closeModal('listModal')">Close</button>
-    </div>
-
-    <div id="updateModal" class="modal">
-        <h2 style="color:#00ff00; font-family:'Orbitron'; border-bottom: 2px solid #333; padding-bottom: 10px;">UPDATE DETAILS</h2>
-        <div class="update-box">
-            <div style="display:flex; justify-content:space-between;">
-                <span class="title-text">Website update</span>
-                <span class="date-text">01/01/2026</span>
-            </div>
-            <p style="font-size:15px; margin:10px 0;">নতুন ইউজার ইন্টারফেস এবং স্পিড অপ্টিমাইজেশন করা হয়েছে।</p>
-            <div class="next-update">Next update coming soon.</div>
-        </div>
-        <button class="close-btn" onclick="closeModal('updateModal')">Close</button>
-    </div>  
-    
-    <div id="privacyModal" class="modal">
-        <h2 style="color:#ff00ff; font-family:'Orbitron'">SECURITY & PRIVACY</h2>
-        <p style="color: #00ff00; font-weight: bold;">Security Version: 1.1</p>
-        <p style="font-size: 14px; line-height: 1.6; color: #eee;">
-            আপনাদের নিরাপত্তা আমাদের সর্বোচ্চ অগ্রাধিকার। ব্যবহারকারীদের ব্যক্তিগত তথ্য এবং ব্রাউজিং কার্যক্রম সুরক্ষিত রাখতে আমরা নিয়মিত আমাদের সিস্টেম আপডেট করি। আমরা একটি সুরক্ষিত ডিজিটাল পরিবেশ বজায় রাখতে প্রতিশ্রুতিবদ্ধ।
-        </p>
-        <button class="close-btn" onclick="closeModal('privacyModal')">Close</button>
-    </div>
-
-    <div class="intro-left">
-        <h3 style="font-family:'Orbitron'; color:var(--neon)">পরিচিতি</h3>
-        <p>আমি <b>মোঃ নাজিম ইসলাম (NAZIM 69x)</b>। আপনাদের ভালোবাসায় আমি এগিয়ে যাচ্ছি।</p>
-    </div>
-
-    <section class="hero">
-        <img src="profile.jpg" alt="NAZIM 69x" class="profile-img"> 
-        <h1 style="font-family: 'Orbitron'; font-size: 35px; margin: 0;">NAZIM 69x</h1>
-    </section>
-
-    <div class="grid">
-        <div class="video-box"><iframe src="https://www.tiktok.com/embed/7589163619233926420"></iframe></div>
-        <div class="video-box"><iframe src="https://www.tiktok.com/embed/7583955549369421077"></iframe></div>
-    </div>
-
-    <script>
-        window.selectedStars = 0;
-        function openModal(id) { document.getElementById(id).style.display = "block"; }
-        function closeModal(id) { document.getElementById(id).style.display = "none"; }
-        function setStar(n) {
-            window.selectedStars = n;
-            let stars = document.querySelectorAll('.stars i');
-            stars.forEach((s, i) => s.classList.toggle('active', i < n));
-        }
-        window.onclick = function(e) { if(e.target.className==='modal') e.target.style.display="none"; }
-    </script>
 </body>
 </html>
